@@ -1,5 +1,8 @@
 var nxStore = require('next-store');
 module.exports={
+  getUpdate:function(inStore){
+    return inStore.getState();
+  },
   getRoot:function(inStore){
     return inStore.getState().__root__;
   },

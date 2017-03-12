@@ -6,12 +6,39 @@ var applyMiddleware = require('redux').applyMiddleware;
 var ReduxThunk = require('redux-thunk').default;
 var Reducers = require('./redux-reducers');
 var States = require('./redux-states');
+var Actions = require('./redux-actions');
 
 var ReduxBoot = nx.declare({
   statics:{
     run:function(inApp, inAppId){
       return new ReduxBoot(inApp, inAppId);
     }
+  },
+  properties:{
+    update:{
+      set:Actions.update,
+      get:States.getUpdate.bind(this,this._store)
+    },
+    root:{
+      set:Actions.root,
+      get:States.getRoot.bind(this,this._store)
+    },
+    memory:{
+      set:Actions.memory,
+      get:States.getMemory.bind(this,this._store)
+    },
+    request:{
+      set:Actions.request,
+      get:States.getRequest.bind(this,this._store)
+    },
+    local:{
+      set:Actions.local,
+      get:States.getLocal.bind(this)
+    },
+    session:{
+      set:Actions.session,
+      get:States.getSession.bind(this)
+    },
   },
   methods:{
     init(inApp, inAppId){
@@ -33,11 +60,13 @@ var ReduxBoot = nx.declare({
           store: this._store,
           getState:this._store.getState.bind(this),
           dispatch:this._store.dispatch.bind(this),
-          root: States.getRoot.bind(this,this._store),
-          memory: States.getMemory.bind(this,this._store),
-          request: States.getRequest.bind(this,this._store),
-          local: States.getLocal.bind(this),
-          session: States.getSession.bind(this),
+          update: this.update.bind(this),
+          root: this.root.bind(this),
+          memory: this.memory.bind(this),
+          request: this.request.bind(this),
+          local: this.local.bind(this),
+          session: this.session.bind(this),
+          local: this.local.bind(this),
         }),
         this._container
       );
