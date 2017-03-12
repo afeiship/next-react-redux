@@ -1,7 +1,7 @@
 module.exports = {
-  AppBase:require('./src/app-base'),
-  ReduxBoot:require('./src/boot'),
-  Actions:require('./src/actions'),
-  Reducers:require('./src/reducers'),
-  States:require('./src/states'),
+  ReduxAppBase:require('./src/redux-app-base'),
+  ReduxBoot:require('./src/redux-boot'),
+  ReduxActions:require('./src/redux-actions'),
+  ReduxReducers:require('./src/redux-reducers'),
+  ReduxStates:require('./src/redux-states'),
 };

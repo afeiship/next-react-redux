@@ -4,8 +4,8 @@ var nx = require('next-js-core2');
 var createStore=require('redux').createStore;
 var applyMiddleware = require('redux').applyMiddleware;
 var ReduxThunk = require('redux-thunk').default;
-var Reducers = require('./reducers');
-var States = require('./states');
+var Reducers = require('./redux-reducers');
+var States = require('./redux-states');
 
 var ReduxBoot = nx.declare({
   statics:{

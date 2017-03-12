@@ -1,6 +1,6 @@
 var React = require('react');
-module.exports =  React.createClass({
-  displayName:'AppBase',
+var ReduxAppBase =  React.createClass({
+  displayName:'ReduxAppBase',
   componentWillMount:function(){
     Object.assign(AppBase,this.props);
   },
@@ -8,6 +8,8 @@ module.exports =  React.createClass({
     return null;
   }
 });
+
+module.exports = ReduxAppBase;
 
 
 
