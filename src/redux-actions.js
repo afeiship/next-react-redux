@@ -5,31 +5,31 @@ module.exports = {
       data:inData
     }
   },
-  updateRoot:function(inData){
+  root:function(inData){
     return {
       type:'root',
       data:inData
     }
   },
-  updateMemory:function(inData){
+  memory:function(inData){
     return {
       type:'memory',
       data:inData
     }
   },
-  updateRequest:function(inData){
+  request:function(inData){
     return {
       type:'request',
       data:inData
     }
   },
-  updateSession:function(inData){
+  session:function(inData){
     return {
       type:'session',
       data:inData
     }
   },
-  updateLocal:function(inData){
+  local:function(inData){
     return {
       type:'local',
       data:inData
