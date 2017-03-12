@@ -13,6 +13,8 @@ module.exports = function(inState,inAction){
   switch(type){
     case 'update':
       return Object.assign(state, data);
+    case 'root':
+      return Object.assign(state, { __root__: data});
     case 'request':
       return Object.assign(state, { __request__: data});
     case 'memory':
