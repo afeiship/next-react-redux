@@ -4,8 +4,8 @@ var nx = require('next-js-core2');
 var createStore=require('redux').createStore;
 var applyMiddleware = require('redux').applyMiddleware;
 var ReduxThunk = require('redux-thunk').default;
-var reducers = require('./reducers');
-var states = require('./states');
+var Reducers = require('./reducers');
+var States = require('./states');
 
 var ReduxBoot = nx.declare({
   statics:{
@@ -17,7 +17,7 @@ var ReduxBoot = nx.declare({
     init(inApp, inAppId){
       this._app = inApp;
       this._store = createStore(
-        reducers,
+        Reducers,
         applyMiddleware(ReduxThunk)
       );
       this._container = document.getElementById(inAppId);
@@ -31,11 +31,12 @@ var ReduxBoot = nx.declare({
       ReactDOM.render(
         React.createElement(this._app, {
           store: this._store,
-          root: states.getRoot.bind(this,this._store),
-          memory: states.getMemory.bind(this,this._store),
-          request: states.getRequest.bind(this,this._store),
-          local: states.getLocal.bind(this),
-          session: states.getSession.bind(this),
+          getState:this._store.getState.bind(this),
+          root: States.getRoot.bind(this,this._store),
+          memory: States.getMemory.bind(this,this._store),
+          request: States.getRequest.bind(this,this._store),
+          local: States.getLocal.bind(this),
+          session: States.getSession.bind(this),
         }),
         this._container
       );
