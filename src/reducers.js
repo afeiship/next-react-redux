@@ -1,30 +1,4 @@
-
-// function getInitialState() {
-//   return {
-//     __root__: null,
-//     __request__: {},
-//     __memory__: {},
-//   };
-// }
-
-// export default  function (state = getInitialState(), action) {
-//   const {type,data} = action;
-
-//   switch (type) {
-//     case 'update':
-//       return Object.assign(state, data);
-//     case 'request':
-//       return Object.assign(state, { __request__: data});
-//     case 'memory':
-//       return Object.assign(state, { __memory__: data});
-//     case 'session':
-//       break;
-//     case 'local':
-//       break;
-//   }
-//   return state;
-// }
-
+var nxStore = require('next-store');
 var defaultState = {
   __root__: null,
   __request__: {},
@@ -44,9 +18,14 @@ module.exports = function(inState,inAction){
     case 'memory':
       return Object.assign(state, { __memory__: data});
     case 'session':
-      break;
+      nxStore.engine = 'sessionStorage';
+      nxStore.sets(data);
+      return state;
     case 'local':
-      break;
+      nxStore.engine = 'localStorage';
+      nxStore.sets(data);
+      return state;
   }
 
+  return state;
 };
