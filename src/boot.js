@@ -32,6 +32,7 @@ var ReduxBoot = nx.declare({
         React.createElement(this._app, {
           store: this._store,
           getState:this._store.getState.bind(this),
+          dispatch:this._store.dispatch.bind(this),
           root: States.getRoot.bind(this,this._store),
           memory: States.getMemory.bind(this,this._store),
           request: States.getRequest.bind(this,this._store),
