@@ -2,6 +2,17 @@
 > Redux boot enhanced version based on next toolkit.
 
 
+## options:
+| name | type | value | description |
+| :----| :----| :----| :----|
+| root  | ReactInstnace | null | Your root instance of the application |
+| memory  | Object | {} | Application memory data storage |
+| local  | Object | null | Application localStoarage |
+| session  | Object | {}} | Application sessionStoreage |
+| request  | Object | {}} | Application request data |
+
+
+
 ## usage:
 ```javascript
 import 'components/styles/index.scss';
