@@ -8,8 +8,8 @@
 | root  | ReactInstnace | null | Your root instance of the application |
 | memory  | Object | {} | Application memory data storage |
 | local  | Object | null | Application localStoarage |
-| session  | Object | {}} | Application sessionStoreage |
-| request  | Object | {}} | Application request data |
+| session  | Object | {} | Application sessionStoreage |
+| request  | Object | {} | Application request data |
 
 
 
