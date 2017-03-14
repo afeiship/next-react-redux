@@ -29,7 +29,7 @@ module.exports = function(inState,inAction){
         nxStore.sets(inState.local);
       }
       if(inState.session){
-        nxStore.session ='sessionStorage';
+        nxStore.engine ='sessionStorage';
         nxStore.sets(inState.session);
       }
       break;
