@@ -29,6 +29,13 @@ module.exports = function(inState,inAction){
       nxStore.engine = type+'Storage';
       nxStore.sets(data);
       return state;
+    case '@@redux/INIT':
+      data = inState.local || inState.session;
+      if(data){
+        nxStore.engine = inState.local ? 'localStorage' : 'sessionStorage';
+        nxStore.sets(data);
+      }
+      break;
   }
 
   return state;
