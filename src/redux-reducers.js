@@ -1,18 +1,12 @@
 var nxStore = require('next-store');
-var defaultState = {
-  __root__: null,
-  __request__: {},
-  __memory__: {},
-};
-
 module.exports = function(inState,inAction){
   var type = inAction.type;
   var data = inAction.data;
-  var state = Object.assign(defaultState,{
+  var state = {
     __root__: inState.root || null,
     __request__: inState.request || {},
     __memory__: inState.memory || {}
-  });
+  };
 
 
   switch(type){
