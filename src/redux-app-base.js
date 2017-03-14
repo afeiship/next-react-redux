@@ -1,8 +1,9 @@
 var React = require('react');
 var ReduxAppBase =  React.createClass({
-  getInitialState(){
+  getInitialState:function(){
+    let initialReducer = this.initialReducer ;
     Object.assign(ReduxAppBase,this.props);
-    //console.log('Your can implment `initialState` to initial reducer state.');
+    initialReducer && initialReducer(ReduxAppBase.actions);
     return null;
   },
   render:function(){
