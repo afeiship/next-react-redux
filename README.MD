@@ -24,10 +24,6 @@ import React from 'react';
 import {ReduxAppBase} from 'next-redux-boot';
 
 export default class extends ReduxAppBase {
-  componentDidMount() {
-    console.log(ReduxAppBase.memory());
-  }
-
   static initialState() {
     return {
       memory: {
@@ -49,6 +45,10 @@ export default class extends ReduxAppBase {
         afei:'session test..'
       }
     }
+  }
+
+  componentDidMount() {
+    console.log(ReduxAppBase.memory());
   }
 
   _onClick() {
