@@ -1,5 +1,5 @@
-#next-redux-boot
-> Redux boot enhanced version based on next toolkit.
+#next-react-redux
+> React redux enhanced version based on next toolkit.
 
 
 ## options:
@@ -15,13 +15,13 @@
 ## initial your reducer:
 ```javascript
 // index.js:
-import {ReduxBoot} from 'next-redux-boot';
+import {ReduxBoot} from 'next-react-redux';
 import App from './app';
 ReduxBoot.run(App,'app');
 
 //app.js:
 import React from 'react';
-import {ReduxAppBase} from 'next-redux-boot';
+import {ReduxAppBase} from 'next-react-redux';
 
 export default class extends ReduxAppBase {
   static initialState() {

@@ -1,12 +1,13 @@
 {
-  "name": "next-redux-boot",
+  "name": "next-react-redux",
   "version": "0.0.0",
-  "description": "Redux boot enhanced version based on next toolkit.",
+  "description": "React redux enhanced version based on next toolkit.",
   "homepage": "https://github.com/afeiship/next-redux-boot",
   "author": {
     "name": "afei",
     "email": "1290657123@qq.com"
   },
+  "main":"index.js",
   "license": "MIT",
   "devDependencies": {
     "del": "^2.2.1",
