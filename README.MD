@@ -38,12 +38,20 @@ export default class extends ReduxAppBase {
         },
         myInitial: 0,
         sum: 0
+      },
+      local:{
+        store:0,
+        items:[
+          {key:1}
+        ]
+      },
+      session:{
+        afei:'session test..'
       }
     }
   }
 
   _onClick() {
-
     const {actions} = ReduxAppBase;
     let {test} = ReduxAppBase.local(['test']);
     test++;
@@ -55,10 +63,10 @@ export default class extends ReduxAppBase {
     return (
       <div className="blank-module-view">
         member-list....{test}
-        <buttton onClick={this._onClick.bind(this)}>TEST</buttton>
+
+        <button className="dc-button" onClick={this._onClick.bind(this)}>TEST</button>
       </div>
     );
   }
 }
-
 ```
