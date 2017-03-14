@@ -1,11 +1,10 @@
 var React = require('react');
+var Actions = require('./redux-actions');
 var ReduxAppBase =  React.createClass({
-  componentWillMount:function(){
+  getInitialState(){
     Object.assign(ReduxAppBase,this.props);
-    this.initialState();
-  },
-  initialState(){
-    console.log('Your can implment `initialState` to initial reducer state.');
+    //console.log('Your can implment `initialState` to initial reducer state.');
+    return null;
   },
   render:function(){
     return null;
