@@ -5,21 +5,20 @@ var createStore=require('redux').createStore;
 var bindActionCreators=require('redux').bindActionCreators;
 var applyMiddleware = require('redux').applyMiddleware;
 var ReduxThunk = require('redux-thunk').default;
-var Reducers = require('./redux-reducers');
 var States = require('./redux-states');
 var Actions = require('./redux-actions');
 
 var ReduxBoot = nx.declare({
   statics:{
-    run:function(inApp, inAppId){
-      return new ReduxBoot(inApp, inAppId);
+    run:function(inApp, inReducers,inAppId){
+      return new ReduxBoot(inApp, inReducers,inAppId);
     }
   },
   methods:{
-    init(inApp, inAppId){
+    init(inApp, inReducers,inAppId){
       this._app = inApp;
       this._store = createStore(
-        Reducers,
+        inReducers,
         applyMiddleware(ReduxThunk)
       );
       this._container = document.getElementById(inAppId);

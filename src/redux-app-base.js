@@ -3,7 +3,7 @@ var ReduxAppBase =  React.createClass({
   getInitialState:function(){
     let initialReducer = this.initialReducer ;
     Object.assign(ReduxAppBase,this.props);
-    initialReducer && initialReducer(ReduxAppBase.actions);
+    initialReducer && initialReducer.call(this,ReduxAppBase.actions);
     return null;
   },
   render:function(){

@@ -20,11 +20,8 @@ module.exports = function(inState,inAction){
     case 'memory':
       return Object.assign(state, { __memory__: data});
     case 'session':
-      nxStore.engine = 'sessionStorage';
-      nxStore.sets(data);
-      return state;
     case 'local':
-      nxStore.engine = 'localStorage';
+      nxStore.engine = type+'Storage';
       nxStore.sets(data);
       return state;
   }
