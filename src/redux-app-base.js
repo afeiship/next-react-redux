@@ -1,5 +1,4 @@
 var React = require('react');
-var Actions = require('./redux-actions');
 var ReduxAppBase =  React.createClass({
   getInitialState(){
     Object.assign(ReduxAppBase,this.props);
