@@ -7,23 +7,28 @@ var applyMiddleware = require('redux').applyMiddleware;
 var ReduxThunk = require('redux-thunk').default;
 var States = require('./redux-states');
 var Actions = require('./redux-actions');
+var Reducers = require('./redux-reducers');
 
 var ReduxBoot = nx.declare({
   statics:{
-    run:function(inApp, inReducers,inAppId){
-      return new ReduxBoot(inApp, inReducers,inAppId);
+    run:function(inApp,inAppId){
+      return new ReduxBoot(inApp,inAppId);
     }
   },
   methods:{
-    init(inApp, inReducers,inAppId){
+    init(inApp,inAppId){
       this._app = inApp;
       this._store = createStore(
-        inReducers,
+        this.reducers.bind(this),
         applyMiddleware(ReduxThunk)
       );
       this._container = document.getElementById(inAppId);
       this.subscribe();
       this.renderTo();
+    },
+    reducers:function (inState,inAction) {
+      var initialState = this._app.initialState();
+      return Reducers( inState || initialState ,inAction);
     },
     subscribe: function() {
       this._store.subscribe(this.renderTo.bind(this));

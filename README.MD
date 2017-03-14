@@ -12,49 +12,63 @@
 | request  | Object | {} | Application request data |
 
 
-
-## usage:
-```javascript
-import 'components/styles/index.scss';
-import './style';
-import {ReduxBoot} from 'next-redux-boot';
-import App from './app';
-
-ReduxBoot.run(App,'app');
-```
-
-
 ## initial your reducer:
 ```javascript
+// reducers:
+import {ReduxReducers} from 'next-redux-boot';
+function getInitialState() {
+  return {
+    memory: {
+      initialData: {
+        tes: 123,
+        age: 100,
+        items: []
+      },
+      myInitial: 0,
+      sum: 0
+    }
+  }
+}
+
+export default function (inState = getInitialState(), inAction) {
+  return ReduxReducers(inState, inAction);
+}
+
+// index.js:
+import {ReduxBoot} from 'next-redux-boot';
+import App from './app';
+import reducers from './reducers';
+
+ReduxBoot.run(App,reducers,'app');
+
+//app.js:
+import React from 'react';
+import {ReduxAppBase} from 'next-redux-boot';
+
+
 export default class extends ReduxAppBase {
-  initialReducerState(){
-    cosnt {dispatch} = AppBase;
-    dispatch(ReduxActions.memory({test:1234,abc:'abcd'}));
+  componentDidMount() {
+    console.log(ReduxAppBase.memory());
   }
 
-  componentDidMount(){
-    console.dir(ReduxAppBase);
-    const {dispatch} = ReduxAppBase;
-    dispatch(ReduxActions.root(this));
-    dispatch(ReduxActions.local({afei:'test',items:[{age:1},{age:2},{age:3}]}));
-    dispatch(ReduxActions.session({afei2:'test2',items2:[{age:1},{age:2},{age:3}]}));
-    dispatch(ReduxActions.memory({test:1234,abc:'abcd'}));
-    console.log(ReduxAppBase.root());
-    console.log(ReduxAppBase.local(['afei']));
-    console.log(ReduxAppBase.local(['afei','items']));
-    console.log(ReduxAppBase.session(['afei2']));
-    console.log(ReduxAppBase.session(['afei2','items2']));
-    console.log(ReduxAppBase.memory());
-    console.log(ReduxAppBase.getState());
+  _onClick() {
+    const {actions} = ReduxAppBase;
+    let {test} = ReduxAppBase.local(['test']);
+    test++;
+    actions.local({test: test})
   }
 
   render() {
+    const {test} = ReduxAppBase.local(['test']);
     return (
       <div className="blank-module-view">
-        blank-module-view...
+        member-list....{test}
+
+        <buttton onClick={this._onClick.bind(this)}>TEST</buttton>
       </div>
     );
   }
 }
+
 
 ```

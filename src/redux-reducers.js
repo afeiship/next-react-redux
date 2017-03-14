@@ -8,7 +8,12 @@ var defaultState = {
 module.exports = function(inState,inAction){
   var type = inAction.type;
   var data = inAction.data;
-  var state = Object.assign(defaultState,inState);
+  var state = Object.assign(defaultState,{
+    __root__: inState.root || null,
+    __request__: inState.request || {},
+    __memory__: inState.memory || {}
+  });
+
 
   switch(type){
     case 'update':
