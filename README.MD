@@ -14,44 +14,36 @@
 
 ## initial your reducer:
 ```javascript
-// reducers:
-import {ReduxReducers} from 'next-redux-boot';
-function getInitialState() {
-  return {
-    memory: {
-      initialData: {
-        tes: 123,
-        age: 100,
-        items: []
-      },
-      myInitial: 0,
-      sum: 0
-    }
-  }
-}
-
-export default function (inState = getInitialState(), inAction) {
-  return ReduxReducers(inState, inAction);
-}
-
 // index.js:
 import {ReduxBoot} from 'next-redux-boot';
 import App from './app';
-import reducers from './reducers';
-
-ReduxBoot.run(App,reducers,'app');
+ReduxBoot.run(App,'app');
 
 //app.js:
 import React from 'react';
 import {ReduxAppBase} from 'next-redux-boot';
-
 
 export default class extends ReduxAppBase {
   componentDidMount() {
     console.log(ReduxAppBase.memory());
   }
 
+  static initialState() {
+    return {
+      memory: {
+        initialData: {
+          tes: 123,
+          age: 100,
+          items: []
+        },
+        myInitial: 0,
+        sum: 0
+      }
+    }
+  }
+
   _onClick() {
+
     const {actions} = ReduxAppBase;
     let {test} = ReduxAppBase.local(['test']);
     test++;
@@ -63,12 +55,10 @@ export default class extends ReduxAppBase {
     return (
       <div className="blank-module-view">
         member-list....{test}
-
         <buttton onClick={this._onClick.bind(this)}>TEST</buttton>
       </div>
     );
   }
 }
-
 
 ```
