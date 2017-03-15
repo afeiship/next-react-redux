@@ -10,6 +10,3 @@ var ReduxAppBase =  React.createClass({
 });
 
 module.exports = ReduxAppBase;
-
-
-
