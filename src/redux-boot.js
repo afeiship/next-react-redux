@@ -15,6 +15,54 @@ var ReduxBoot = nx.declare({
       return new ReduxBoot(inApp,inAppId);
     }
   },
+  properties:{
+    root:{
+      set:function(inValue){
+        var actions = bindActionCreators(Actions, this._store.dispatch);
+        actions.root(inValue);
+      },
+      get:function(){
+        return States.getRoot(this._store);
+      }
+    },
+    memory:{
+      set:function(inValue){
+        var actions = bindActionCreators(Actions, this._store.dispatch);
+        actions.memory(inValue);
+      },
+      get:function(){
+        return States.getMemory(this._store);
+      }
+    },
+    request:{
+      set:function(inValue){
+        var actions = bindActionCreators(Actions, this._store.dispatch);
+        actions.request(inValue);
+      },
+      get:function(){
+        return States.getRequest(this._store);
+      }
+    },
+    local:{
+      set:function(inValue){
+        console.log('set local rboot:',inValue);
+        var actions = bindActionCreators(Actions, this._store.dispatch);
+        actions.local(inValue);
+      },
+      get:function(){
+        return States.getLocal();
+      }
+    },
+    session:{
+      set:function(inValue){
+        var actions = bindActionCreators(Actions, this._store.dispatch);
+        actions.session(inValue);
+      },
+      get:function(){
+        return States.getSession();
+      }
+    }
+  },
   methods:{
     init(inApp,inAppId){
       this._app = inApp;
@@ -41,11 +89,7 @@ var ReduxBoot = nx.declare({
           dispatch:this._store.dispatch.bind(this),
           actions:bindActionCreators(Actions, this._store.dispatch),
           update: States.getUpdate.bind(this,this._store),
-          root: States.getRoot.bind(this,this._store),
-          memory: States.getMemory.bind(this,this._store),
-          request: States.getRequest.bind(this,this._store),
-          local: States.getLocal.bind(this),
-          session: States.getSession.bind(this),
+          $:this
         }),
         this._container
       );
