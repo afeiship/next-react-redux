@@ -45,7 +45,6 @@ var ReduxBoot = nx.declare({
     },
     local:{
       set:function(inValue){
-        console.log('set local rboot:',inValue);
         var actions = bindActionCreators(Actions, this._store.dispatch);
         actions.local(inValue);
       },
