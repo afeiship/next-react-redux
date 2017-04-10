@@ -18,8 +18,7 @@ var ReduxBoot = nx.declare({
   properties:{
     root:{
       set:function(inValue){
-        var actions = bindActionCreators(Actions, this._store.dispatch);
-        actions.root(inValue);
+        this._$actions.root(inValue);
       },
       get:function(){
         return States.getRoot(this._store);
@@ -27,8 +26,7 @@ var ReduxBoot = nx.declare({
     },
     memory:{
       set:function(inValue){
-        var actions = bindActionCreators(Actions, this._store.dispatch);
-        actions.memory(inValue);
+        this._$actions.memory(inValue);
       },
       get:function(){
         return States.getMemory(this._store);
@@ -36,8 +34,7 @@ var ReduxBoot = nx.declare({
     },
     request:{
       set:function(inValue){
-        var actions = bindActionCreators(Actions, this._store.dispatch);
-        actions.request(inValue);
+        this._$actions.request(inValue);
       },
       get:function(){
         return States.getRequest(this._store);
@@ -45,8 +42,7 @@ var ReduxBoot = nx.declare({
     },
     local:{
       set:function(inValue){
-        var actions = bindActionCreators(Actions, this._store.dispatch);
-        actions.local(inValue);
+        this._$actions.local(inValue);
       },
       get:function(){
         return States.getLocal();
@@ -54,8 +50,7 @@ var ReduxBoot = nx.declare({
     },
     session:{
       set:function(inValue){
-        var actions = bindActionCreators(Actions, this._store.dispatch);
-        actions.session(inValue);
+        this._$actions.session(inValue);
       },
       get:function(){
         return States.getSession();
@@ -70,6 +65,7 @@ var ReduxBoot = nx.declare({
         applyMiddleware(ReduxThunk)
       );
       this._container = document.getElementById(inAppId);
+      this._$actions = bindActionCreators(Actions, this._store.dispatch);
       this.subscribe();
       this.renderTo();
     },
@@ -81,6 +77,7 @@ var ReduxBoot = nx.declare({
       this._store.subscribe(this.renderTo.bind(this));
     },
     renderTo: function() {
+
       ReactDOM.render(
         React.createElement(this._app, {
           store: this._store,
