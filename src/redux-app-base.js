@@ -1,7 +1,8 @@
 var createReactClass = require('create-react-class');
+var nx = require('next-js-core2');
 var ReduxAppBase =  createReactClass({
   getInitialState:function(){
-    Object.assign(ReduxAppBase,this.props);
+    nx.mix(ReduxAppBase,this.props);
     return null;
   },
   render:function(){
