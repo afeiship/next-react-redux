@@ -24,6 +24,14 @@ var ReduxBoot = nx.declare({
         return States.getRoot(this._store);
       }
     },
+    error:{
+      set:function(inValue){
+        this._$actions.error(inValue);
+      },
+      get:function(){
+        return States.getError(this._store);
+      }
+    },
     memory:{
       set:function(inValue){
         this._$actions.memory(inValue);
