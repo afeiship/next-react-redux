@@ -3,6 +3,14 @@ var nx = require('next-js-core2');
 var COMMAND = require('./const').COMMAND;
 
 var ReduxAppBase = createReactClass({
+  statics:{
+    attachEmiterSystem:function(){
+      var emiterSystem = nx.delete(nx.event, 'init');
+      nx.mix(ReduxAppBase.prototype, {
+        __listeners__:{}
+      },emiterSystem);
+    }
+  },
   getInitialState: function () {
     var self = this;
     nx.mix(ReduxAppBase, this.props, this.commandMethods());
@@ -32,6 +40,6 @@ var ReduxAppBase = createReactClass({
 });
 
 //add nx.event for ReduxAppBase.
-nx.mix(ReduxAppBase.prototype, nx.event);
+ReduxAppBase.attachEmiterSystem();
 
 module.exports = ReduxAppBase;
