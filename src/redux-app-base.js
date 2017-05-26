@@ -29,7 +29,6 @@ var ReduxAppBase = createReactClass({
     }
   },
   attachCommands: function () {
-    this.init();
     this.on(COMMAND, function (_, inArgs) {
       this.command && this.command(inArgs.name, inArgs.data);
     });
