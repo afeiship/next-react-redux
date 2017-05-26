@@ -8,6 +8,8 @@ var ReduxThunk = require('redux-thunk').default;
 var States = require('next-redux-base').states;
 var Actions = require('next-redux-base').actions;
 var Reducers = require('next-redux-base').reducers;
+var COMMAND = require('./const').COMMAND;
+
 
 var ReduxBoot = nx.declare({
   statics: {
@@ -85,10 +87,15 @@ var ReduxBoot = nx.declare({
       this._store.subscribe(this.renderTo.bind(this));
     },
     command: function (inName, inData, inContext) {
-      inContext.fire('__command__', {
+      inContext.fire(COMMAND, {
         name: inName,
         data: inData
-      });
+      }, inContext);
+    },
+    onCommand: function (inName, inHandler, inContext) {
+      inContext.on(COMMAND, function (inSender, inArgs) {
+        inHandler.call(inContext, inSender, inArgs);
+      }, inContext);
     },
     renderTo: function () {
       ReactDOM.render(
@@ -99,6 +106,7 @@ var ReduxBoot = nx.declare({
           actions: bindActionCreators(Actions, this._store.dispatch),
           update: States.getUpdate.bind(this, this._store),
           command: this.command.bind(this),
+          onCommand: this.onCommand.bind(this),
           $: this
         }),
         this._container
