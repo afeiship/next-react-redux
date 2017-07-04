@@ -94,7 +94,9 @@ var ReduxBoot = nx.declare({
     },
     onCommand: function (inName, inHandler, inContext) {
       inContext.on(COMMAND, function (inSender, inArgs) {
-        inHandler.call(inContext, inSender, inArgs);
+        if( inArgs.name === inName ){
+          inHandler.call(inContext, inSender, inArgs);
+        }
       }, inContext);
     },
     renderTo: function () {
