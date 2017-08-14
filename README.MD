@@ -50,15 +50,13 @@ export default class AppBase extends ReduxAppBase {
   }
 
   componentDidMount() {
-    console.log(AppBase.$.memory());
+    console.log(AppBase.$.memory);
   }
 
   _onClick() {
     let {test} = AppBase.$.local;
     test++;
-    AppBase.$.local ={
-        test
-    }
+    AppBase.$.local = { test };
   }
 
   render() {
