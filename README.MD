@@ -1,6 +1,8 @@
 #next-react-redux
 > React redux enhanced version based on next toolkit.
 
+## todo:
++ [ ] bugfix: inHandler.call(inContext, inSender, inArgs);(inArgs.data) 
 
 ## options:
 | name | type | value | description |
