@@ -7,7 +7,7 @@
 ## options:
 | name | type | value | description |
 | :----| :----| :----| :----|
-| root  | ReactInstnace | null | Your root instance of the application |
+| root  | ReactInstnace | null | Your root element(react element) of the application |
 | memory  | Object | {} | Application memory data storage |
 | local  | Object | null | Application localStoarage |
 | session  | Object | {} | Application sessionStoreage |
