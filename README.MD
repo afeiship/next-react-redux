@@ -15,6 +15,11 @@
 
 
 ## initial your reducer:
++ HTML
+```html
+<main id="app"></main>
+```
++ index.js
 ```javascript
 // index.js:
 import {ReduxBoot} from 'next-react-redux';
