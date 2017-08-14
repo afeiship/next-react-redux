@@ -1,4 +1,4 @@
-#next-react-redux
+# next-react-redux
 > React redux enhanced version based on next toolkit.
 
 ## todo:
@@ -25,7 +25,7 @@ ReduxBoot.run(App,'app');
 import React from 'react';
 import {ReduxAppBase} from 'next-react-redux';
 
-export default class extends ReduxAppBase {
+export default class AppBase extends ReduxAppBase {
   static initialState() {
     return {
       memory: {
@@ -40,7 +40,7 @@ export default class extends ReduxAppBase {
       local:{
         store:0,
         items:[
-          {key:1}
+          { key:1 }
         ]
       },
       session:{
@@ -50,18 +50,19 @@ export default class extends ReduxAppBase {
   }
 
   componentDidMount() {
-    console.log(ReduxAppBase.memory());
+    console.log(AppBase.$.memory());
   }
 
   _onClick() {
-    const {actions} = ReduxAppBase;
-    let {test} = ReduxAppBase.local(['test']);
+    let {test} = AppBase.$.local;
     test++;
-    actions.local({test: test})
+    AppBase.$.local ={
+        test
+    }
   }
 
   render() {
-    const {test} = ReduxAppBase.local(['test']);
+    const {test} = AppBase.$.local;
     return (
       <div className="blank-module-view">
         member-list....{test}
