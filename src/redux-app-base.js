@@ -5,7 +5,7 @@ var COMMAND = require('./const').COMMAND;
 var ReduxAppBase = createReactClass({
   statics:{
     attachEmiterSystem:function(){
-      var emiterSystem = nx.delete(nx.event, ['init']);
+      delete nx.event.init;
       nx.mix(ReduxAppBase.prototype, {
         __listeners__:{}
       },emiterSystem);
