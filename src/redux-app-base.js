@@ -8,7 +8,7 @@ var ReduxAppBase = createReactClass({
       delete nx.event.init;
       nx.mix(ReduxAppBase.prototype, {
         __listeners__:{}
-      },emiterSystem);
+      },nx.event);
     }
   },
   getInitialState: function () {
