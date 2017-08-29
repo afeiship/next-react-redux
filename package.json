@@ -1,6 +1,6 @@
 {
   "name": "next-react-redux",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "React redux enhanced version based on next toolkit.",
   "homepage": "https://github.com/afeiship/next-redux-boot",
   "author": {
@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "create-react-class": "^15.5.2",
-    "next-js-core2": "github:afeiship/next-js-core2#v1.2.0",
+    "next-js-core2": "github:afeiship/next-js-core2",
     "next-redux-base": "github:afeiship/next-redux-base",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
