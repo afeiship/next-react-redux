@@ -17,6 +17,14 @@ var ReduxAppBase = createReactClass({
     this.attachCommands();
     return null;
   },
+  componentDidMount: function(){
+    var root = this.refs.root;
+    if(root){
+      this.props.$.memory = {
+        history: root.history
+      };
+    }
+  },
   commandMethods:function(){
     var self = this;
     return {
