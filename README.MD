@@ -2,7 +2,7 @@
 > React redux enhanced version based on next toolkit.
 
 ## todo:
-+ [ ] bugfix: inHandler.call(inContext, inSender, inArgs);(inArgs.data) 
++ [ ] bugfix: inHandler.call(inContext, inSender, inArgs);(inArgs.data)
 
 ## options:
 | name | type | value | description |
@@ -52,6 +52,10 @@ export default class AppBase extends ReduxAppBase {
         afei:'session test..'
       }
     }
+  }
+
+  command(inName,inData){
+    console.log(inName,inData,'I am global commander!');
   }
 
   componentDidMount() {
