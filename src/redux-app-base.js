@@ -19,7 +19,7 @@ var ReduxAppBase = createReactClass({
   },
   componentDidMount: function(){
     var root = this.refs.root;
-    if(root){
+    if(root && root.history){
       this.props.$.memory = {
         history: root.history
       };
