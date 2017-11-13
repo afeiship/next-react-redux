@@ -27,8 +27,6 @@
     "babel-register": "^6.0.0"
   },
   "dependencies": {
-    "next-js-core2": "github:afeiship/next-js-core2",
-    "react": "^16.1.0",
-    "react-dom": "^16.1.0"
+    "next-js-core2": "github:afeiship/next-js-core2"
   }
 }
