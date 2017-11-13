@@ -1,4 +1,6 @@
-export default {
-  ReduxAppBase: require('./redux-app-base').default,
-  ReduxBoot: require('./redux-boot').default
-}
+import ReduxAppBase from './redux-app-base';
+import ReduxBoot from './redux-boot';
+
+export {
+  ReduxAppBase, ReduxBoot
+};
