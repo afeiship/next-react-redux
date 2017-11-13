@@ -1,12 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {createStore, bindActionCreators} from 'redux';
-import nx from 'next-js-core2';
-import {States, Actions, Reducers} from 'next-redux-base';
-import {COMMAND} from './const';
+var React = require('react');
+var ReactDOM = require('react-dom');
+var nx = require('next-js-core2');
+var createStore = require('redux').createStore;
+var bindActionCreators = require('redux').bindActionCreators;
+var applyMiddleware = require('redux').applyMiddleware;
+var ReduxThunk = require('redux-thunk').default;
+var States = require('next-redux-base').states;
+var Actions = require('next-redux-base').actions;
+var Reducers = require('next-redux-base').reducers;
+var COMMAND = require('./const').COMMAND;
 
 
-const ReduxBoot = nx.declare({
+var ReduxBoot = nx.declare({
   statics: {
     run: function (inApp, inAppId) {
       return new ReduxBoot(inApp, inAppId);
@@ -66,7 +71,8 @@ const ReduxBoot = nx.declare({
     init: function (inApp, inAppId) {
       this._app = inApp;
       this._store = createStore(
-        this.reducers.bind(this)
+        this.reducers.bind(this),
+        applyMiddleware(ReduxThunk)
       );
       this._container = document.getElementById(inAppId);
       this._$actions = bindActionCreators(Actions, this._store.dispatch);
@@ -74,7 +80,7 @@ const ReduxBoot = nx.declare({
       this.renderTo();
     },
     reducers: function (inState, inAction) {
-      const initialState = this._app.initialState();
+      var initialState = this._app.initialState();
       return Reducers(inState || initialState, inAction);
     },
     subscribe: function () {
@@ -88,7 +94,7 @@ const ReduxBoot = nx.declare({
     },
     onCommand: function (inName, inHandler, inContext) {
       inContext.on(COMMAND, function (inSender, inArgs) {
-        if (inArgs.name === inName) {
+        if( inArgs.name === inName ){
           inHandler.call(inContext, inSender, inArgs.data);
         }
       }, inContext);
@@ -111,4 +117,4 @@ const ReduxBoot = nx.declare({
   }
 });
 
-export default ReduxBoot;
+module.exports = ReduxBoot;

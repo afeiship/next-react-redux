@@ -1,32 +1,28 @@
-var createReactClass = require('create-react-class');
-var nx = require('next-js-core2');
-var COMMAND = require('./const').COMMAND;
+export default class ReduxAppBase extends React.Component {
+  static attachEmiterSystem() {
+    delete nx.event.init;
+    nx.mix(ReduxAppBase.prototype, {
+      __listeners__: {}
+    }, nx.event);
+  }
 
-var ReduxAppBase = createReactClass({
-  statics:{
-    attachEmiterSystem:function(){
-      delete nx.event.init;
-      nx.mix(ReduxAppBase.prototype, {
-        __listeners__:{}
-      },nx.event);
-    }
-  },
-  getInitialState: function () {
-    var self = this;
-    nx.mix(ReduxAppBase, this.props, this.commandMethods());
+  constructor(props) {
+    super(props);
+    nx.mix(ReduxAppBase, props, this.commandMethods());
     this.attachCommands();
-    return null;
-  },
-  componentDidMount: function(){
-    var root = this.refs.root;
-    if(root && root.history){
+  }
+
+  componentDidMount() {
+    const {root} = this.refs;
+    if (root && root.history) {
       this.props.$.memory = {
         history: root.history
       };
     }
-  },
-  commandMethods:function(){
-    var self = this;
+  }
+
+  commandMethods() {
+    const self = this;
     return {
       command: function (inName, inData) {
         self.props.command(inName, inData, self);
@@ -35,18 +31,15 @@ var ReduxAppBase = createReactClass({
         self.props.onCommand(inName, inHandler, self);
       }
     }
-  },
-  attachCommands: function () {
+  }
+
+  attachCommands() {
     this.on(COMMAND, function (_, inArgs) {
       this.command && this.command(inArgs.name, inArgs.data);
     });
-  },
-  render: function () {
+  }
+
+  render() {
     return null;
   }
-});
-
-//add nx.event for ReduxAppBase.
-ReduxAppBase.attachEmiterSystem();
-
-module.exports = ReduxAppBase;
+}

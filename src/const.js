@@ -1,3 +1,3 @@
-module.exports = {
-  COMMAND:'__command__'
+export default {
+  COMMAND: '__command__'
 };
