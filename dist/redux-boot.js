@@ -18,11 +18,13 @@ var _nextJsCore = require('next-js-core2');
 
 var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
 
-var _nextReduxBase = require('next-redux-base');
-
 var _const = require('./const');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var States = require('next-redux-base').states;
+var Actions = require('next-redux-base').actions;
+var Reducers = require('next-redux-base').reducers;
 
 var ReduxBoot = _nextJsCore2.default.declare({
   statics: {
@@ -36,7 +38,7 @@ var ReduxBoot = _nextJsCore2.default.declare({
         this._$actions.root(inValue);
       },
       get: function get() {
-        return _nextReduxBase.States.getRoot(this._store);
+        return States.getRoot(this._store);
       }
     },
     error: {
@@ -44,7 +46,7 @@ var ReduxBoot = _nextJsCore2.default.declare({
         this._$actions.error(inValue);
       },
       get: function get() {
-        return _nextReduxBase.States.getError(this._store);
+        return States.getError(this._store);
       }
     },
     memory: {
@@ -52,7 +54,7 @@ var ReduxBoot = _nextJsCore2.default.declare({
         this._$actions.memory(inValue);
       },
       get: function get() {
-        return _nextReduxBase.States.getMemory(this._store);
+        return States.getMemory(this._store);
       }
     },
     request: {
@@ -60,7 +62,7 @@ var ReduxBoot = _nextJsCore2.default.declare({
         this._$actions.request(inValue);
       },
       get: function get() {
-        return _nextReduxBase.States.getRequest(this._store);
+        return States.getRequest(this._store);
       }
     },
     local: {
@@ -68,7 +70,7 @@ var ReduxBoot = _nextJsCore2.default.declare({
         this._$actions.local(inValue);
       },
       get: function get() {
-        return _nextReduxBase.States.getLocal();
+        return States.getLocal();
       }
     },
     session: {
@@ -76,7 +78,7 @@ var ReduxBoot = _nextJsCore2.default.declare({
         this._$actions.session(inValue);
       },
       get: function get() {
-        return _nextReduxBase.States.getSession();
+        return States.getSession();
       }
     }
   },
@@ -85,13 +87,13 @@ var ReduxBoot = _nextJsCore2.default.declare({
       this._app = inApp;
       this._store = (0, _redux.createStore)(this.reducers.bind(this));
       this._container = document.getElementById(inAppId);
-      this._$actions = (0, _redux.bindActionCreators)(_nextReduxBase.Actions, this._store.dispatch);
+      this._$actions = (0, _redux.bindActionCreators)(Actions, this._store.dispatch);
       this.subscribe();
       this.renderTo();
     },
     reducers: function reducers(inState, inAction) {
       var initialState = this._app.initialState();
-      return (0, _nextReduxBase.Reducers)(inState || initialState, inAction);
+      return Reducers(inState || initialState, inAction);
     },
     subscribe: function subscribe() {
       this._store.subscribe(this.renderTo.bind(this));
@@ -114,8 +116,8 @@ var ReduxBoot = _nextJsCore2.default.declare({
         store: this._store,
         getState: this._store.getState.bind(this),
         dispatch: this._store.dispatch.bind(this),
-        actions: (0, _redux.bindActionCreators)(_nextReduxBase.Actions, this._store.dispatch),
-        update: _nextReduxBase.States.getUpdate.bind(this, this._store),
+        actions: (0, _redux.bindActionCreators)(Actions, this._store.dispatch),
+        update: States.getUpdate.bind(this, this._store),
         command: this.command.bind(this),
         onCommand: this.onCommand.bind(this),
         $: this
