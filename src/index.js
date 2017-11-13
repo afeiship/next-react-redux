@@ -1,4 +1,4 @@
 export default {
-  ReduxAppBase: require('./src/redux-app-base').default,
-  ReduxBoot: require('./src/redux-boot').default
+  ReduxAppBase: require('./redux-app-base').default,
+  ReduxBoot: require('./redux-boot').default
 }
