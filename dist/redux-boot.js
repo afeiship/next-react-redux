@@ -12,11 +12,11 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _redux = require('redux');
-
 var _nextJsCore = require('next-js-core2');
 
 var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
+
+var _redux = require('redux');
 
 var _const = require('./const');
 

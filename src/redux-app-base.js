@@ -1,5 +1,6 @@
 import COMMAND from './const';
 import React from 'react';
+import nx from 'next-js-core2';
 
 class ReduxAppBase extends React.Component {
   static attachEmiterSystem() {

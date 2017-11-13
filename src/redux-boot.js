@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore, bindActionCreators} from 'redux';
 import nx from 'next-js-core2';
+import {createStore, bindActionCreators} from 'redux';
 import COMMAND from './const';
 
 const States = require('next-redux-base').states;
