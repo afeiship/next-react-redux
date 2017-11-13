@@ -1,4 +1,4 @@
-export default class ReduxAppBase extends React.Component {
+class ReduxAppBase extends React.Component {
   static attachEmiterSystem() {
     delete nx.event.init;
     nx.mix(ReduxAppBase.prototype, {
@@ -43,3 +43,7 @@ export default class ReduxAppBase extends React.Component {
     return null;
   }
 }
+
+ReduxAppBase.attachEmiterSystem();
+
+export default ReduxAppBase;

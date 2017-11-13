@@ -76,4 +76,6 @@ var ReduxAppBase = function (_React$Component) {
   return ReduxAppBase;
 }(React.Component);
 
+ReduxAppBase.attachEmiterSystem();
+
 exports.default = ReduxAppBase;
