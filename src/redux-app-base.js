@@ -1,4 +1,5 @@
 import COMMAND from './const';
+import React from 'react';
 
 class ReduxAppBase extends React.Component {
   static attachEmiterSystem() {
