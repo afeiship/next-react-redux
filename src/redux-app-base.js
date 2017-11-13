@@ -1,3 +1,5 @@
+import COMMAND from './const';
+
 class ReduxAppBase extends React.Component {
   static attachEmiterSystem() {
     delete nx.event.init;

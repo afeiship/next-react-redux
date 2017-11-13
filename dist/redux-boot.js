@@ -20,6 +20,8 @@ var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
 
 var _const = require('./const');
 
+var _const2 = _interopRequireDefault(_const);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var States = require('next-redux-base').states;
@@ -99,13 +101,13 @@ var ReduxBoot = _nextJsCore2.default.declare({
       this._store.subscribe(this.renderTo.bind(this));
     },
     command: function command(inName, inData, inContext) {
-      inContext.fire(_const.COMMAND, {
+      inContext.fire(_const2.default, {
         name: inName,
         data: inData
       }, inContext);
     },
     onCommand: function onCommand(inName, inHandler, inContext) {
-      inContext.on(_const.COMMAND, function (inSender, inArgs) {
+      inContext.on(_const2.default, function (inSender, inArgs) {
         if (inArgs.name === inName) {
           inHandler.call(inContext, inSender, inArgs.data);
         }
