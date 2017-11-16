@@ -30,6 +30,7 @@
     "next-js-core2": "github:afeiship/next-js-core2",
     "next-redux-base": "github:afeiship/next-redux-base",
     "react": "*",
+    "redux": "*",
     "react-dom": "*"
   }
 }
