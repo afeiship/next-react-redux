@@ -49,18 +49,16 @@ var ReduxAppBase = function (_React$Component) {
     return _this;
   }
 
-  _createClass(ReduxAppBase, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var root = this.refs.root;
+  // componentDidMount() {
+  //   const {root} = this.refs;
+  //   if (root && root.history) {
+  //     this.props.$.memory = {
+  //       history: root.history
+  //     };
+  //   }
+  // }
 
-      if (root && root.history) {
-        this.props.$.memory = {
-          history: root.history
-        };
-      }
-    }
-  }, {
+  _createClass(ReduxAppBase, [{
     key: 'commandMethods',
     value: function commandMethods() {
       var self = this;

@@ -16,14 +16,14 @@ class ReduxAppBase extends React.Component {
     this.attachCommands();
   }
 
-  componentDidMount() {
-    const {root} = this.refs;
-    if (root && root.history) {
-      this.props.$.memory = {
-        history: root.history
-      };
-    }
-  }
+  // componentDidMount() {
+  //   const {root} = this.refs;
+  //   if (root && root.history) {
+  //     this.props.$.memory = {
+  //       history: root.history
+  //     };
+  //   }
+  // }
 
   commandMethods() {
     const self = this;
