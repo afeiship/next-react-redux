@@ -77,7 +77,7 @@ const ReduxBoot = nx.declare({
       this.renderTo();
     },
     reducers: function (inState, inAction) {
-      var initialState = this._app.initialState();
+      const initialState = this._app.initialState();
       return Reducers(inState || initialState, inAction);
     },
     subscribe: function () {
