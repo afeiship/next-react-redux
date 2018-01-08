@@ -2,7 +2,8 @@
 > React redux enhanced version based on next toolkit.
 
 ## todo:
-+ [ ] bugfix: inHandler.call(inContext, inSender, inArgs);(inArgs.data)
++ [x] bugfix: inHandler.call(inContext, inSender, inArgs);(inArgs.data)
++ [ ] optimize: remove onCommand(inSender) args
 
 ## options:
 | name | type | value | description |
