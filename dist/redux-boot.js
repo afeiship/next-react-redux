@@ -32,12 +32,9 @@ var ReduxBoot = _nextJsCore2.default.declare({
   statics: {
     _instance: null,
     run: function run(inApp, inAppId) {
-      if (!this._instance) {
-        this._instance = new ReduxBoot(inApp, inAppId);
-      } else {
-        this._instance.renderTo();
-      }
-      return this._instance;
+      var instance = this._instance = this._instance || new ReduxBoot(inApp, inAppId);
+      instance.renderTo();
+      return instance;
     }
   },
   properties: {
@@ -97,7 +94,6 @@ var ReduxBoot = _nextJsCore2.default.declare({
       this._container = document.getElementById(inAppId);
       this._$actions = (0, _redux.bindActionCreators)(Actions, this._store.dispatch);
       this.subscribe();
-      this.renderTo();
     },
     reducers: function reducers(inState, inAction) {
       var initialState = this._app.initialState();
