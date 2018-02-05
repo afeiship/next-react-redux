@@ -10,9 +10,15 @@ const Reducers = require('next-redux-base').reducers;
 
 
 const ReduxBoot = nx.declare({
-  statics: {
-    run: function (inApp, inAppId) {
-      return new ReduxBoot(inApp, inAppId);
+  statics : {
+    _instance: null,
+    run: function run(inApp, inAppId) {
+      if (!this._instance) {
+        this._instance = new ReduxBoot(inApp, inAppId);
+      } else {
+        this._instance.renderTo();
+      }
+      return this._instance;
     }
   },
   properties: {
