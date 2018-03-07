@@ -109,11 +109,20 @@ var ReduxBoot = _nextJsCore2.default.declare({
       }, inContext);
     },
     onCommand: function onCommand(inName, inHandler, inContext) {
-      inContext.on(_const2.default, function (inSender, inArgs) {
+      var handler = function handler(inSender, inArgs) {
         if (inArgs.name === inName) {
           inHandler.call(inContext, inSender, inArgs.data);
         }
-      }, inContext);
+      };
+
+      //attache:
+      inContext.on(_const2.default, handler, inContext);
+
+      return {
+        destroy: function destroy() {
+          inContext.off(_const2.default, handler, inContext);
+        }
+      };
     },
     renderTo: function renderTo() {
       _reactDom2.default.render(_react2.default.createElement(this._app, {

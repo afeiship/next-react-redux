@@ -92,11 +92,20 @@ const ReduxBoot = nx.declare({
       }, inContext);
     },
     onCommand: function (inName, inHandler, inContext) {
-      inContext.on(COMMAND, function (inSender, inArgs) {
+      var handler = function (inSender, inArgs) {
         if (inArgs.name === inName) {
           inHandler.call(inContext, inSender, inArgs.data);
         }
-      }, inContext);
+      };
+
+      //attache:
+      inContext.on(COMMAND, handler, inContext);
+
+      return {
+        destroy: function(){
+          inContext.off(COMMAND, handler, inContext);
+        }
+      };
     },
     renderTo: function () {
       ReactDOM.render(
