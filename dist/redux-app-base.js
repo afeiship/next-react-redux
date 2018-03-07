@@ -67,7 +67,7 @@ var ReduxAppBase = function (_React$Component) {
           self.props.command(inName, inData, self);
         },
         onCommand: function onCommand(inName, inHandler) {
-          self.props.onCommand(inName, inHandler, self);
+          return self.props.onCommand(inName, inHandler, self);
         }
       };
     }

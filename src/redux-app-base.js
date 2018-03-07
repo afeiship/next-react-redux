@@ -32,7 +32,7 @@ class ReduxAppBase extends React.Component {
         self.props.command(inName, inData, self);
       },
       onCommand: function (inName, inHandler) {
-        self.props.onCommand(inName, inHandler, self);
+        return self.props.onCommand(inName, inHandler, self);
       }
     }
   }
