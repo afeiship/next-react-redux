@@ -79,11 +79,10 @@ const ReduxBoot = nx.declare({
       this._container = document.getElementById(inAppId);
       this._$actions = bindActionCreators(Actions, this._store.dispatch);
       this.subscribe();
-
-      //setPrefix:
-      NxStore.config(inOptions.prefix);
     },
     reducers: function (inState, inAction) {
+      //setPrefix:
+      NxStore.config(inOptions.prefix);
       const initialState = this._app.initialState(NxStore);
       return Reducers(inState || initialState, inAction, this._options);
     },

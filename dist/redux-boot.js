@@ -99,11 +99,10 @@ var ReduxBoot = _nextJsCore2.default.declare({
       this._container = document.getElementById(inAppId);
       this._$actions = (0, _redux.bindActionCreators)(Actions, this._store.dispatch);
       this.subscribe();
-
-      //setPrefix:
-      _nextStore2.default.config(inOptions.prefix);
     },
     reducers: function reducers(inState, inAction) {
+      //setPrefix:
+      _nextStore2.default.config(inOptions.prefix);
       var initialState = this._app.initialState(_nextStore2.default);
       return Reducers(inState || initialState, inAction, this._options);
     },
