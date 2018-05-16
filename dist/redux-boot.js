@@ -22,6 +22,10 @@ var _const = require('./const');
 
 var _const2 = _interopRequireDefault(_const);
 
+var _nextStore = require('next-store');
+
+var _nextStore2 = _interopRequireDefault(_nextStore);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var States = require('next-redux-base').states;
@@ -95,9 +99,12 @@ var ReduxBoot = _nextJsCore2.default.declare({
       this._container = document.getElementById(inAppId);
       this._$actions = (0, _redux.bindActionCreators)(Actions, this._store.dispatch);
       this.subscribe();
+
+      //setPrefix:
+      _nextStore2.default.config(inOptions.prefix);
     },
     reducers: function reducers(inState, inAction) {
-      var initialState = this._app.initialState();
+      var initialState = this._app.initialState(_nextStore2.default);
       return Reducers(inState || initialState, inAction, this._options);
     },
     subscribe: function subscribe() {

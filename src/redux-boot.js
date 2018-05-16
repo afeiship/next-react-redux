@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import nx from 'next-js-core2';
 import {createStore, bindActionCreators} from 'redux';
 import COMMAND from './const';
+import NxStore from 'next-store';
 
 const States = require('next-redux-base').states;
 const Actions = require('next-redux-base').actions;
@@ -78,9 +79,12 @@ const ReduxBoot = nx.declare({
       this._container = document.getElementById(inAppId);
       this._$actions = bindActionCreators(Actions, this._store.dispatch);
       this.subscribe();
+
+      //setPrefix:
+      NxStore.config(inOptions.prefix);
     },
     reducers: function (inState, inAction) {
-      const initialState = this._app.initialState();
+      const initialState = this._app.initialState(NxStore);
       return Reducers(inState || initialState, inAction, this._options);
     },
     subscribe: function () {
