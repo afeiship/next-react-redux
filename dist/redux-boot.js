@@ -31,7 +31,7 @@ var Reducers = require('next-redux-base').reducers;
 var ReduxBoot = _nextJsCore2.default.declare({
   statics: {
     _instance: null,
-    run: function run(inApp, inAppId) {
+    run: function run(inApp, inAppId, inOptions) {
       var instance = this._instance = this._instance || new ReduxBoot(inApp, inAppId);
       instance.renderTo();
       return instance;
@@ -88,8 +88,9 @@ var ReduxBoot = _nextJsCore2.default.declare({
     }
   },
   methods: {
-    init: function init(inApp, inAppId) {
+    init: function init(inApp, inAppId, inOptions) {
       this._app = inApp;
+      this._options = inOptions;
       this._store = (0, _redux.createStore)(this.reducers.bind(this));
       this._container = document.getElementById(inAppId);
       this._$actions = (0, _redux.bindActionCreators)(Actions, this._store.dispatch);
@@ -97,7 +98,7 @@ var ReduxBoot = _nextJsCore2.default.declare({
     },
     reducers: function reducers(inState, inAction) {
       var initialState = this._app.initialState();
-      return Reducers(inState || initialState, inAction);
+      return Reducers(inState || initialState, inAction, this._options);
     },
     subscribe: function subscribe() {
       this._store.subscribe(this.renderTo.bind(this));
