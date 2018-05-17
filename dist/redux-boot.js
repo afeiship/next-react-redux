@@ -35,16 +35,10 @@ var Reducers = require('next-redux-base').reducers;
 var ReduxBoot = _nextJsCore2.default.declare({
   statics: {
     _instance: null,
-    _options: null,
     run: function run(inApp, inAppId, inOptions) {
       var instance = this._instance = this._instance || new ReduxBoot(inApp, inAppId, inOptions);
       instance.renderTo();
-      this._options = inOptions;
       return instance;
-    },
-    initialState: function initialState() {
-      _nextStore2.default.config(this._options.prefix);
-      this._instance._app.initialState(_nextStore2.default);
     }
   },
   properties: {
