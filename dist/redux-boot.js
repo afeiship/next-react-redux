@@ -39,6 +39,9 @@ var ReduxBoot = _nextJsCore2.default.declare({
       var instance = this._instance = this._instance || new ReduxBoot(inApp, inAppId, inOptions);
       instance.renderTo();
       return instance;
+    },
+    initialState: function initialState() {
+      return this._instance._app.initialState(_nextStore2.default);
     }
   },
   properties: {

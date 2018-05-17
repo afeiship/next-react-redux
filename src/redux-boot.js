@@ -19,7 +19,7 @@ const ReduxBoot = nx.declare({
       return instance;
     },
     initialState: function(){
-      this._instance._app.initialState(NxStore);
+      return this._instance._app.initialState(NxStore);
     }
   },
   properties: {
