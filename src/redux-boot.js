@@ -17,7 +17,7 @@ const ReduxBoot = nx.declare({
     run: function run(inApp, inAppId, inOptions) {
       var instance = this._instance = this._instance || new ReduxBoot(inApp, inAppId, inOptions);
       instance.renderTo();
-      this._options = this.inOptions;
+      this._options = inOptions;
       return instance;
     },
     initialState: function(){
