@@ -19,7 +19,7 @@ const ReduxBoot = nx.declare({
       return instance;
     },
     initialState: function(){
-      return this._instance._app.initialState(NxStore);
+      return this._instance._app._initialState;
     }
   },
   properties: {
@@ -87,6 +87,7 @@ const ReduxBoot = nx.declare({
       //setPrefix:
       NxStore.config(this._options.prefix);
       const initialState = this._app.initialState(NxStore);
+      this._initialState = initialState;
       return Reducers(inState || initialState, inAction, this._options);
     },
     subscribe: function () {
