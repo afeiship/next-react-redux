@@ -8,16 +8,26 @@ import NxStore from 'next-store';
 const States = require('next-redux-base').states;
 const Actions = require('next-redux-base').actions;
 const Reducers = require('next-redux-base').reducers;
+const DEFAULT_APP_PATH = './app';
+
 
 
 const ReduxBoot = nx.declare({
   statics : {
     _instance: null,
-    run: function run(inApp, inAppId, inOptions) {
+    run: function(inApp, inAppId, inOptions) {
       //module.hot must create every time:
-      var instance = this._instance = new ReduxBoot(inApp, inAppId, inOptions);
+      const instance = this._instance = new ReduxBoot(inApp, inAppId, inOptions);
       instance.renderTo();
       return instance;
+    },
+    hotRun: function (inApp, inAppId, inOptions) {
+      const appPath = inOptions.appPath || DEFAULT_APP_PATH;
+      const render = () => {
+        this.run(inApp, inAppId, inOptions);
+        module.hot && module.hot.accept(appPath, render);
+      };
+      render();
     },
     initialState: function(){
       return this._instance._app.initialState(NxStore);
