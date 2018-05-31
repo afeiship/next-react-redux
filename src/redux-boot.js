@@ -14,7 +14,8 @@ const ReduxBoot = nx.declare({
   statics : {
     _instance: null,
     run: function run(inApp, inAppId, inOptions) {
-      var instance = this._instance = this._instance || new ReduxBoot(inApp, inAppId, inOptions);
+      //module.hot must create every time:
+      var instance = this._instance = new ReduxBoot(inApp, inAppId, inOptions);
       instance.renderTo();
       return instance;
     },
