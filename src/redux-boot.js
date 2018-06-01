@@ -21,14 +21,14 @@ const ReduxBoot = nx.declare({
       instance.renderTo();
       return instance;
     },
-    hotRun: function (inApp, inAppId, inOptions) {
-      const appPath = inOptions.appPath || DEFAULT_APP_PATH;
-      const render = () => {
-        this.run(inApp, inAppId, inOptions);
-        module.hot && module.hot.accept(appPath, render);
-      };
-      render();
-    },
+    // hotRun: function (inApp, inAppId, inOptions) {
+    //   const appPath = inOptions.appPath || DEFAULT_APP_PATH;
+    //   const render = () => {
+    //     this.run(inApp, inAppId, inOptions);
+    //     module.hot && module.hot.accept(appPath, render);
+    //   };
+    //   render();
+    // },
     initialState: function(){
       return this._instance._app.initialState(NxStore);
     }
