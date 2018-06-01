@@ -31,7 +31,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var States = require('next-redux-base').states;
 var Actions = require('next-redux-base').actions;
 var Reducers = require('next-redux-base').reducers;
-var DEFAULT_APP_PATH = './app';
+var DEFAULT_PREFIX = { prefix: 'nrrx' };
 
 var ReduxBoot = _nextJsCore2.default.declare({
   statics: {
@@ -42,14 +42,6 @@ var ReduxBoot = _nextJsCore2.default.declare({
       instance.renderTo();
       return instance;
     },
-    // hotRun: function (inApp, inAppId, inOptions) {
-    //   const appPath = inOptions.appPath || DEFAULT_APP_PATH;
-    //   const render = () => {
-    //     this.run(inApp, inAppId, inOptions);
-    //     module.hot && module.hot.accept(appPath, render);
-    //   };
-    //   render();
-    // },
     initialState: function initialState() {
       return this._instance._app.initialState(_nextStore2.default);
     }
@@ -107,7 +99,7 @@ var ReduxBoot = _nextJsCore2.default.declare({
   methods: {
     init: function init(inApp, inAppId, inOptions) {
       this._app = inApp;
-      this._options = inOptions;
+      this._options = inOptions || DEFAULT_PREFIX;
       this._store = (0, _redux.createStore)(this.reducers.bind(this));
       this._container = document.getElementById(inAppId);
       this._$actions = (0, _redux.bindActionCreators)(Actions, this._store.dispatch);

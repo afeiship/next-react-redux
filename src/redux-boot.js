@@ -8,8 +8,7 @@ import NxStore from 'next-store';
 const States = require('next-redux-base').states;
 const Actions = require('next-redux-base').actions;
 const Reducers = require('next-redux-base').reducers;
-const DEFAULT_APP_PATH = './app';
-
+const DEFAULT_PREFIX = { prefix: 'nrrx' };
 
 
 const ReduxBoot = nx.declare({
@@ -21,14 +20,6 @@ const ReduxBoot = nx.declare({
       instance.renderTo();
       return instance;
     },
-    // hotRun: function (inApp, inAppId, inOptions) {
-    //   const appPath = inOptions.appPath || DEFAULT_APP_PATH;
-    //   const render = () => {
-    //     this.run(inApp, inAppId, inOptions);
-    //     module.hot && module.hot.accept(appPath, render);
-    //   };
-    //   render();
-    // },
     initialState: function(){
       return this._instance._app.initialState(NxStore);
     }
@@ -86,10 +77,8 @@ const ReduxBoot = nx.declare({
   methods: {
     init: function (inApp, inAppId, inOptions) {
       this._app = inApp;
-      this._options = inOptions;
-      this._store = createStore(
-        this.reducers.bind(this)
-      );
+      this._options = inOptions || DEFAULT_PREFIX;
+      this._store = createStore( this.reducers.bind(this) );
       this._container = document.getElementById(inAppId);
       this._$actions = bindActionCreators(Actions, this._store.dispatch);
       this.subscribe();
