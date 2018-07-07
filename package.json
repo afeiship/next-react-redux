@@ -26,12 +26,14 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.0.0"
   },
+  "peerDependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
   "dependencies": {
     "next-js-core2": "github:afeiship/next-js-core2",
     "next-redux-base": "github:afeiship/next-redux-base",
     "next-store": "github:afeiship/next-store",
-    "react": "*",
-    "react-dom": "*",
     "redux": "^3.7.2"
   }
 }
