@@ -79,6 +79,14 @@ var ReduxBoot = _nextJsCore2.default.declare({
         return States.getRequest(this._store);
       }
     },
+    update: {
+      set: function set(inValue) {
+        this._$actions.update(inValue);
+      },
+      get: function get() {
+        return States.getUpdate(this._store);
+      }
+    },
     local: {
       set: function set(inValue) {
         this._$actions.local(inValue);

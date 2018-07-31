@@ -57,6 +57,14 @@ const ReduxBoot = nx.declare({
         return States.getRequest(this._store);
       }
     },
+    update: {
+      set: function (inValue) {
+        this._$actions.update(inValue);
+      },
+      get: function () {
+        return States.getUpdate(this._store);
+      }
+    },
     local: {
       set: function (inValue) {
         this._$actions.local(inValue);
