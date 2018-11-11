@@ -1,18 +1,14 @@
 # next-react-redux
 > React redux enhanced version based on next toolkit.
 
-## todo:
-+ [x] bugfix: inHandler.call(inContext, inSender, inArgs);(inArgs.data)
-+ [ ] optimize: remove onCommand(inSender) args
-
 ## options:
-| name | type | value | description |
-| :----| :----| :----| :----|
-| root  | ReactInstnace | null | Your root element(react element) of the application |
-| memory  | Object | {} | Application memory data storage |
-| local  | Object | null | Application localStoarage |
-| session  | Object | {} | Application sessionStoreage |
-| request  | Object | {} | Application request data |
+| name    | type          | value | description                                         |
+|:--------|:--------------|:------|:----------------------------------------------------|
+| root    | ReactInstnace | null  | Your root element(react element) of the application |
+| memory  | Object        | {}    | Application memory data storage                     |
+| local   | Object        | null  | Application localStoarage                           |
+| session | Object        | {}    | Application sessionStoreage                         |
+| request | Object        | {}    | Application request data                            |
 
 
 ## initial your reducer:
@@ -55,9 +51,14 @@ export default class AppBase extends ReduxAppBase {
     }
   }
 
-  command(inName,inData){
-    console.log(inName,inData,'I am global commander!');
+  constructor(inProps){
+    super(inProps);
+    this._onClick = this._onClick.bind(this);
   }
+
+  // command(inName,inData){
+  //   console.log(inName,inData,'I am global commander!');
+  // }
 
   componentDidMount() {
     console.log(AppBase.$.memory);
@@ -74,10 +75,13 @@ export default class AppBase extends ReduxAppBase {
     return (
       <div className="blank-module-view">
         member-list....{test}
-
-        <button className="dc-button" onClick={this._onClick.bind(this)}>TEST</button>
+        <button className="dc-button" onClick={this._onClick}>TEST</button>
       </div>
     );
   }
 }
 ```
+
+## todo:
++ [x] bugfix: inHandler.call(inContext, inSender, inArgs);(inArgs.data)
++ [ ] optimize: remove onCommand(inSender) args
