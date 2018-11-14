@@ -39,24 +39,15 @@ var ReduxAppBase = function (_React$Component) {
     }
   }]);
 
-  function ReduxAppBase(props) {
+  function ReduxAppBase(inProps) {
     _classCallCheck(this, ReduxAppBase);
 
-    var _this = _possibleConstructorReturn(this, (ReduxAppBase.__proto__ || Object.getPrototypeOf(ReduxAppBase)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (ReduxAppBase.__proto__ || Object.getPrototypeOf(ReduxAppBase)).call(this, inProps));
 
-    _nextJsCore2.default.mix(ReduxAppBase, props, _this.commandMethods());
+    _nextJsCore2.default.mix(ReduxAppBase, inProps, _this.commandMethods());
     _this.attachCommands();
     return _this;
   }
-
-  // componentDidMount() {
-  //   const {root} = this.refs;
-  //   if (root && root.history) {
-  //     this.props.$.memory = {
-  //       history: root.history
-  //     };
-  //   }
-  // }
 
   _createClass(ReduxAppBase, [{
     key: 'commandMethods',

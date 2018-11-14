@@ -10,20 +10,11 @@ class ReduxAppBase extends React.Component {
     }, nx.event);
   }
 
-  constructor(props) {
-    super(props);
-    nx.mix(ReduxAppBase, props, this.commandMethods());
+  constructor(inProps) {
+    super(inProps);
+    nx.mix(ReduxAppBase, inProps, this.commandMethods());
     this.attachCommands();
   }
-
-  // componentDidMount() {
-  //   const {root} = this.refs;
-  //   if (root && root.history) {
-  //     this.props.$.memory = {
-  //       history: root.history
-  //     };
-  //   }
-  // }
 
   commandMethods() {
     const self = this;
