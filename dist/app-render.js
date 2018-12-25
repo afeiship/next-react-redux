@@ -16,9 +16,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
+var DEFAULT_OPTIONS = {
+  loadable: true,
+  prefix: 'next-nrr'
+};
+
 exports.default = function (inId, inOptions) {
-  var loadable = inOptions.loadable,
-      options = _objectWithoutProperties(inOptions, ['loadable']);
+  var _Object$assign = Object.assign({}, DEFAULT_OPTIONS, inOptions),
+      loadable = _Object$assign.loadable,
+      options = _objectWithoutProperties(_Object$assign, ['loadable']);
 
   return function (inTarget) {
     if (loadable) {
