@@ -8,7 +8,7 @@ const DEFAULT_OPTIONS = {
 
 export default (inId, inOptions) => {
   const { loadable, ...options } = Object.assign({}, DEFAULT_OPTIONS, inOptions);
-  return function(inTarget) {
+  return (inTarget) => {
     if (loadable) {
       Loadable.preloadReady().then(() => {
         ReduxBoot.run(inTarget, inId, options);
