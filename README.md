@@ -30,7 +30,7 @@ ReduxBoot.run(App, 'root', {
 
 //app.js:
 import React from 'react';
-import { appRender, ReduxAppBase } from 'next-react-redux';
+import { ReduxAppBase } from 'next-react-redux';
 
 export default class AppBase extends ReduxAppBase {
   static initialState() {
@@ -61,9 +61,9 @@ export default class AppBase extends ReduxAppBase {
     this._onClick = this._onClick.bind(this);
   }
 
-  // command(inName,inData){
-  //   console.log(inName,inData,'I am global commander!');
-  // }
+  eventBus(inName,inData){
+    console.log(inName,inData, 'I am global event bus!');
+  }
 
   componentDidMount() {
     console.log(AppBase.$.memory);
