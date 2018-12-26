@@ -18,13 +18,20 @@
 ```
 + index.js
 ```javascript
+// index.js:
+import 'assets/styles/index.scss';
+import { ReduxBoot } from 'next-react-redux';
+import App from './app';
+
+ReduxBoot.run(App, 'root', {
+  prefix: 'react-spa'
+});
+
 
 //app.js:
 import React from 'react';
 import { appRender, ReduxAppBase } from 'next-react-redux';
 
-/* containerId: app, storePrefix: 'my-app'*/
-@appRender('app', { prefix:'my-app' })
 export default class AppBase extends ReduxAppBase {
   static initialState() {
     return {
