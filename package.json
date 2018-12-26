@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "event-mitt": "github:afeiship/event-mitt",
-    "next-js-core2": "github:afeiship/next-js-core2#v1.3.13",
+    "next-js-core2": "github:afeiship/next-js-core2",
     "next-redux-base": "github:afeiship/next-redux-base",
     "next-store": "github:afeiship/next-store",
     "redux": "^3.7.2"
