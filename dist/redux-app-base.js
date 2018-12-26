@@ -31,7 +31,7 @@ var ReduxAppBase = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (ReduxAppBase.__proto__ || Object.getPrototypeOf(ReduxAppBase)).call(this, inProps));
 
     Object.assign(ReduxAppBase, inProps, _eventMitt2.default);
-    ReduxAppBase.on('*', function (inName, inData) {
+    ReduxAppBase.one('*', function (inName, inData) {
       _this.eventBus(inName, inData);
     });
     return _this;
