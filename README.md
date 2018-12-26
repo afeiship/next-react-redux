@@ -2,13 +2,11 @@
 > React redux enhanced version based on next toolkit.
 
 ## options:
-| name    | type          | value | description                                         |
-|:--------|:--------------|:------|:----------------------------------------------------|
-| root    | ReactInstnace | null  | Your root element(react element) of the application |
-| memory  | Object        | {}    | Application memory data storage                     |
-| local   | Object        | null  | Application localStoarage                           |
-| session | Object        | {}    | Application sessionStoreage                         |
-| request | Object        | {}    | Application request data                            |
+| name    | type   | value | description                     |
+|:--------|:-------|:------|:--------------------------------|
+| memory  | Object | {}    | Application memory data storage |
+| local   | Object | null  | Application localStoarage       |
+| session | Object | {}    | Application sessionStoreage     |
 
 
 ## initial your reducer:
