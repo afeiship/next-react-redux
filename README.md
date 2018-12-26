@@ -23,7 +23,8 @@
 import React from 'react';
 import { appRender, ReduxAppBase } from 'next-react-redux';
 
-@appRender('root', { prefix:'my-app' })
+/* containerId: app, storePrefix: 'my-app'*/
+@appRender('app', { prefix:'my-app' })
 export default class AppBase extends ReduxAppBase {
   static initialState() {
     return {
