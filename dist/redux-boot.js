@@ -18,10 +18,6 @@ var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
 
 var _redux = require('redux');
 
-var _const = require('./const');
-
-var _const2 = _interopRequireDefault(_const);
-
 var _nextStore = require('next-store');
 
 var _nextStore2 = _interopRequireDefault(_nextStore);
@@ -33,12 +29,12 @@ var Actions = require('next-redux-base').actions;
 var Reducers = require('next-redux-base').reducers;
 var DEFAULT_PREFIX = { prefix: 'nrrx' };
 
-var ReduxBoot = _nextJsCore2.default.declare({
+exports.default = _nextJsCore2.default.declare({
   statics: {
     _instance: null,
     run: function run(inApp, inAppId, inOptions) {
       //module.hot must create every time:
-      var instance = this._instance = new ReduxBoot(inApp, inAppId, inOptions);
+      var instance = this._instance = new this(inApp, inAppId, inOptions);
       instance.renderTo();
       return instance;
     },
@@ -47,44 +43,12 @@ var ReduxBoot = _nextJsCore2.default.declare({
     }
   },
   properties: {
-    root: {
-      set: function set(inValue) {
-        this._$actions.root(inValue);
-      },
-      get: function get() {
-        return States.getRoot(this._store);
-      }
-    },
-    error: {
-      set: function set(inValue) {
-        this._$actions.error(inValue);
-      },
-      get: function get() {
-        return States.getError(this._store);
-      }
-    },
     memory: {
       set: function set(inValue) {
         this._$actions.memory(inValue);
       },
       get: function get() {
         return States.getMemory(this._store);
-      }
-    },
-    request: {
-      set: function set(inValue) {
-        this._$actions.request(inValue);
-      },
-      get: function get() {
-        return States.getRequest(this._store);
-      }
-    },
-    update: {
-      set: function set(inValue) {
-        this._$actions.update(inValue);
-      },
-      get: function get() {
-        return States.getUpdate(this._store);
       }
     },
     local: {
@@ -122,28 +86,6 @@ var ReduxBoot = _nextJsCore2.default.declare({
     subscribe: function subscribe() {
       this._store.subscribe(this.renderTo.bind(this));
     },
-    command: function command(inName, inData, inContext) {
-      inContext.fire(_const2.default, {
-        name: inName,
-        data: inData
-      }, inContext);
-    },
-    onCommand: function onCommand(inName, inHandler, inContext) {
-      var handler = function handler(inSender, inArgs) {
-        if (inArgs.name === inName) {
-          inHandler.call(inContext, inSender, inArgs.data);
-        }
-      };
-
-      //attache:
-      inContext.on(_const2.default, handler, inContext);
-
-      return {
-        destroy: function destroy() {
-          inContext.off(_const2.default, handler, inContext);
-        }
-      };
-    },
     renderTo: function renderTo() {
       _reactDom2.default.render(_react2.default.createElement(this._app, {
         store: this._store,
@@ -151,12 +93,8 @@ var ReduxBoot = _nextJsCore2.default.declare({
         dispatch: this._store.dispatch.bind(this),
         actions: (0, _redux.bindActionCreators)(Actions, this._store.dispatch),
         update: States.getUpdate.bind(this, this._store),
-        command: this.command.bind(this),
-        onCommand: this.onCommand.bind(this),
         $: this
       }), this._container);
     }
   }
 });
-
-exports.default = ReduxBoot;

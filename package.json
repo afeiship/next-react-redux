@@ -1,6 +1,6 @@
 {
   "name": "next-react-redux",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React redux enhanced version based on next toolkit.",
   "main": "dist/index.js",
   "repository": "git@github.com:afeiship/next-react-redux.git",
@@ -31,6 +31,7 @@
     "react-dom": "^16.4.1"
   },
   "dependencies": {
+    "event-mitt": "github:afeiship/event-mitt",
     "next-js-core2": "github:afeiship/next-js-core2#v1.3.13",
     "next-redux-base": "github:afeiship/next-redux-base",
     "next-store": "github:afeiship/next-store",

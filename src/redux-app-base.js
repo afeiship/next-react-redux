@@ -1,44 +1,19 @@
-import COMMAND from './const';
 import React from 'react';
-import nx from 'next-js-core2';
+import EventMitt from 'event-mitt';
 
 class ReduxAppBase extends React.Component {
-  static attachEmiterSystem() {
-    delete nx.event.init;
-    nx.mix(ReduxAppBase.prototype, {
-      __listeners__: {}
-    }, nx.event);
-  }
-
   constructor(inProps) {
     super(inProps);
-    nx.mix(ReduxAppBase, inProps, this.commandMethods());
-    this.attachCommands();
-  }
-
-  commandMethods() {
-    const self = this;
-    return {
-      command: function (inName, inData) {
-        self.props.command(inName, inData, self);
-      },
-      onCommand: function (inName, inHandler) {
-        return self.props.onCommand(inName, inHandler, self);
-      }
-    }
-  }
-
-  attachCommands() {
-    this.on(COMMAND, function (_, inArgs) {
-      this.command && this.command(inArgs.name, inArgs.data);
+    Object.assign(ReduxAppBase, inProps, EventMitt);
+    ReduxAppBase.on('*', (inName, inData) => {
+      this.eventBus(inName, inData);
     });
   }
 
+  eventBus() {}
   render() {
     return null;
   }
 }
-
-ReduxAppBase.attachEmiterSystem();
 
 export default ReduxAppBase;

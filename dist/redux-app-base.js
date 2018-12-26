@@ -6,17 +6,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _const = require('./const');
-
-var _const2 = _interopRequireDefault(_const);
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _nextJsCore = require('next-js-core2');
+var _eventMitt = require('event-mitt');
 
-var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
+var _eventMitt2 = _interopRequireDefault(_eventMitt);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29,46 +25,21 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var ReduxAppBase = function (_React$Component) {
   _inherits(ReduxAppBase, _React$Component);
 
-  _createClass(ReduxAppBase, null, [{
-    key: 'attachEmiterSystem',
-    value: function attachEmiterSystem() {
-      delete _nextJsCore2.default.event.init;
-      _nextJsCore2.default.mix(ReduxAppBase.prototype, {
-        __listeners__: {}
-      }, _nextJsCore2.default.event);
-    }
-  }]);
-
   function ReduxAppBase(inProps) {
     _classCallCheck(this, ReduxAppBase);
 
     var _this = _possibleConstructorReturn(this, (ReduxAppBase.__proto__ || Object.getPrototypeOf(ReduxAppBase)).call(this, inProps));
 
-    _nextJsCore2.default.mix(ReduxAppBase, inProps, _this.commandMethods());
-    _this.attachCommands();
+    Object.assign(ReduxAppBase, inProps, _eventMitt2.default);
+    ReduxAppBase.on('*', function (inName, inData) {
+      _this.eventBus(inName, inData);
+    });
     return _this;
   }
 
   _createClass(ReduxAppBase, [{
-    key: 'commandMethods',
-    value: function commandMethods() {
-      var self = this;
-      return {
-        command: function command(inName, inData) {
-          self.props.command(inName, inData, self);
-        },
-        onCommand: function onCommand(inName, inHandler) {
-          return self.props.onCommand(inName, inHandler, self);
-        }
-      };
-    }
-  }, {
-    key: 'attachCommands',
-    value: function attachCommands() {
-      this.on(_const2.default, function (_, inArgs) {
-        this.command && this.command(inArgs.name, inArgs.data);
-      });
-    }
+    key: 'eventBus',
+    value: function eventBus() {}
   }, {
     key: 'render',
     value: function render() {
@@ -78,7 +49,5 @@ var ReduxAppBase = function (_React$Component) {
 
   return ReduxAppBase;
 }(_react2.default.Component);
-
-ReduxAppBase.attachEmiterSystem();
 
 exports.default = ReduxAppBase;
