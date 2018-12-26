@@ -86,7 +86,3 @@ export default class AppBase extends ReduxAppBase {
   }
 }
 ```
-
-## todo:
-+ [x] bugfix: inHandler.call(inContext, inSender, inArgs);(inArgs.data)
-+ [ ] optimize: remove onCommand(inSender) args
