@@ -92,7 +92,6 @@ exports.default = _nextJsCore2.default.declare({
         getState: this._store.getState.bind(this),
         dispatch: this._store.dispatch.bind(this),
         actions: (0, _redux.bindActionCreators)(Actions, this._store.dispatch),
-        update: States.getUpdate.bind(this, this._store),
         $: this
       }), this._container);
     }
