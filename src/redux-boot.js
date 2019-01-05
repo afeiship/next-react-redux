@@ -16,6 +16,7 @@ export default nx.declare({
       //module.hot must create every time:
       const instance = (this._instance = new this(inApp, inAppId, inOptions));
       instance.renderTo();
+      instance.export();
       return instance;
     },
     initialState: function() {
@@ -56,6 +57,19 @@ export default nx.declare({
       this._container = document.getElementById(inAppId);
       this._$actions = bindActionCreators(Actions, this._store.dispatch);
       this.subscribe();
+    },
+    export: function() {
+      nx.each(
+        this.__properties__,
+        function(key, value) {
+          var descriptor = {
+            get: value.get.bind(this),
+            set: value.set.bind(this)
+          };
+          nx.defineProperty(nx, `$${key}`, descriptor);
+        },
+        this
+      );
     },
     reducers: function(inState, inAction) {
       //setPrefix:
