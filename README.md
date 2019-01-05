@@ -7,6 +7,7 @@
 | memory  | Object | {}    | Application memory data storage |
 | local   | Object | null  | Application localStoarage       |
 | session | Object | {}    | Application sessionStoreage     |
+| app     | Object | {}    | Application instance            |
 
 
 ## initial your reducer:
@@ -27,10 +28,9 @@ ReduxBoot.run(App, 'root', {
 
 
 //app.js:
-import React from 'react';
 import { ReduxAppBase } from 'next-react-redux';
 
-export default class AppBase extends ReduxAppBase {
+export default class extends ReduxAppBase {
   static initialState() {
     return {
       memory: {
@@ -64,17 +64,17 @@ export default class AppBase extends ReduxAppBase {
   }
 
   componentDidMount() {
-    console.log(AppBase.$.memory);
+    console.log(nx.$memory);
   }
 
   _onClick() {
-    let {test} = AppBase.$.local;
+    let {test} = nx.$local;
     test++;
-    AppBase.$.local = { test };
+    nx.$local = { test };
   }
 
   render() {
-    const {test} = AppBase.$.local;
+    const {test} = nx.$local;
     return (
       <div className="blank-module-view">
         member-list....{test}
