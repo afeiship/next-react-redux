@@ -14,6 +14,10 @@ var _eventMitt = require('event-mitt');
 
 var _eventMitt2 = _interopRequireDefault(_eventMitt);
 
+var _nextJsCore = require('next-js-core2');
+
+var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31,6 +35,8 @@ var ReduxAppBase = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (ReduxAppBase.__proto__ || Object.getPrototypeOf(ReduxAppBase)).call(this, inProps));
 
     Object.assign(ReduxAppBase, inProps, _eventMitt2.default);
+    // export to nx.$app
+    _nextJsCore2.default.$app = ReduxAppBase;
     ReduxAppBase.one('*', function (inName, inData) {
       _this.eventBus(inName, inData);
     });
