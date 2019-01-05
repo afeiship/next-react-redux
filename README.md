@@ -2,12 +2,12 @@
 > React redux enhanced version based on next toolkit.
 
 ## options:
-| name    | type   | value | description                     |
-|:--------|:-------|:------|:--------------------------------|
-| memory  | Object | {}    | Application memory data storage |
-| local   | Object | null  | Application localStoarage       |
-| session | Object | {}    | Application sessionStoreage     |
-| app     | Object | {}    | Application instance            |
+| name        | type   | value | description                     |
+|:------------|:-------|:------|:--------------------------------|
+| nx.$memory  | Object | {}    | Application memory data storage |
+| nx.$local   | Object | null  | Application localStoarage       |
+| nx.$session | Object | {}    | Application sessionStoreage     |
+| nx.$app     | Object | {}    | Application instance            |
 
 
 ## initial your reducer:
