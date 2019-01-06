@@ -1,5 +1,18 @@
-/** NOT SUPPORT IN HMR APP */
-import ReduxBoot from './redux-boot';
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reduxBoot = require('./redux-boot');
+
+var _reduxBoot2 = _interopRequireDefault(_reduxBoot);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; } /** NOT SUPPORT IN HMR APP */
+
+
 // import Loadable from 'react-loadable';
 
 /**
@@ -48,15 +61,17 @@ export default class extends ReduxAppBase {
 }
  */
 
-export default (inId, inOptions) => {
-  const { loadable, ...options } = inOptions;
-  return function(inTarget) {
+exports.default = function (inId, inOptions) {
+  var loadable = inOptions.loadable,
+      options = _objectWithoutProperties(inOptions, ['loadable']);
+
+  return function (inTarget) {
     if (loadable) {
-      Loadable.preloadReady().then(() => {
-        ReduxBoot.run(inTarget, inId, options);
+      Loadable.preloadReady().then(function () {
+        _reduxBoot2.default.run(inTarget, inId, options);
       });
     } else {
-      ReduxBoot.run(inTarget, inId, options);
+      _reduxBoot2.default.run(inTarget, inId, options);
     }
   };
 };
