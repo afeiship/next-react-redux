@@ -26,7 +26,7 @@ export default nx.declare({
   properties: {
     memory: {
       set: function(inValue) {
-        this._$actions.memory(inValue);
+        this._$actions.setMemory(inValue);
       },
       get: function() {
         return States.getMemory(this._store);
@@ -34,7 +34,7 @@ export default nx.declare({
     },
     local: {
       set: function(inValue) {
-        this._$actions.local(inValue);
+        this._$actions.setLocal(inValue);
       },
       get: function() {
         return States.getLocal();
@@ -42,7 +42,7 @@ export default nx.declare({
     },
     session: {
       set: function(inValue) {
-        this._$actions.session(inValue);
+        this._$actions.setSession(inValue);
       },
       get: function() {
         return States.getSession();

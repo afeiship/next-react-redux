@@ -46,7 +46,7 @@ exports.default = _nextJsCore2.default.declare({
   properties: {
     memory: {
       set: function set(inValue) {
-        this._$actions.memory(inValue);
+        this._$actions.setMemory(inValue);
       },
       get: function get() {
         return States.getMemory(this._store);
@@ -54,7 +54,7 @@ exports.default = _nextJsCore2.default.declare({
     },
     local: {
       set: function set(inValue) {
-        this._$actions.local(inValue);
+        this._$actions.setLocal(inValue);
       },
       get: function get() {
         return States.getLocal();
@@ -62,7 +62,7 @@ exports.default = _nextJsCore2.default.declare({
     },
     session: {
       set: function set(inValue) {
-        this._$actions.session(inValue);
+        this._$actions.setSession(inValue);
       },
       get: function get() {
         return States.getSession();
