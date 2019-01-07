@@ -16,7 +16,6 @@ export default nx.declare({
       //module.hot must create every time:
       const instance = (this._instance = new this(inApp, inAppId, inOptions));
       instance.renderTo();
-      instance.export();
       return instance;
     },
     initialState: function() {
@@ -57,6 +56,7 @@ export default nx.declare({
       this._container = document.getElementById(inAppId);
       this._$actions = bindActionCreators(Actions, this._store.dispatch);
       this.subscribe();
+      this.export();
     },
     export: function() {
       nx.each(

@@ -36,7 +36,6 @@ exports.default = _nextJsCore2.default.declare({
       //module.hot must create every time:
       var instance = this._instance = new this(inApp, inAppId, inOptions);
       instance.renderTo();
-      instance.export();
       return instance;
     },
     initialState: function initialState() {
@@ -77,6 +76,7 @@ exports.default = _nextJsCore2.default.declare({
       this._container = document.getElementById(inAppId);
       this._$actions = (0, _redux.bindActionCreators)(Actions, this._store.dispatch);
       this.subscribe();
+      this.export();
     },
     export: function _export() {
       _nextJsCore2.default.each(this.__properties__, function (key, value) {
