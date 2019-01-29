@@ -1,6 +1,6 @@
 {
   "name": "next-react-redux",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "React redux enhanced version based on next toolkit.",
   "main": "dist/index.js",
   "repository": "git@github.com:afeiship/next-react-redux.git",

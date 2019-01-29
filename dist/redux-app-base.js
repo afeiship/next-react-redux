@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -26,24 +27,24 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ReduxAppBase = function (_React$Component) {
-  _inherits(ReduxAppBase, _React$Component);
+var _default = function (_React$Component) {
+  _inherits(_default, _React$Component);
 
-  function ReduxAppBase(inProps) {
-    _classCallCheck(this, ReduxAppBase);
+  function _default(inProps) {
+    _classCallCheck(this, _default);
 
-    var _this = _possibleConstructorReturn(this, (ReduxAppBase.__proto__ || Object.getPrototypeOf(ReduxAppBase)).call(this, inProps));
+    var _this = _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, inProps));
 
-    Object.assign(ReduxAppBase, inProps, _eventMitt2.default);
-    // export to nx.$app
-    _nextJsCore2.default.$app = ReduxAppBase;
-    ReduxAppBase.one('*', function (inName, inData) {
+    var App = _this.constructor;
+    Object.assign(App, inProps, _eventMitt2.default);
+    _nextJsCore2.default.$app = App;
+    _nextJsCore2.default.$app.one('*', function (inName, inData) {
       _this.eventBus(inName, inData);
     });
     return _this;
   }
 
-  _createClass(ReduxAppBase, [{
+  _createClass(_default, [{
     key: 'eventBus',
     value: function eventBus() {}
   }, {
@@ -53,7 +54,7 @@ var ReduxAppBase = function (_React$Component) {
     }
   }]);
 
-  return ReduxAppBase;
+  return _default;
 }(_react2.default.Component);
 
-exports.default = ReduxAppBase;
+exports.default = _default;
