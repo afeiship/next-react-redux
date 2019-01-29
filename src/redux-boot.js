@@ -56,10 +56,10 @@ export default nx.declare({
       this._container = document.getElementById(inAppId);
       this._$actions = bindActionCreators(Actions, this._store.dispatch);
       this.subscribe();
-      this.export();
+      this.exports();
     },
-    export: function() {
-      nx.each(
+    exports: function() {
+      nx.forIn(
         this.__properties__,
         function(key, value) {
           var descriptor = {

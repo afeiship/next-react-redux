@@ -76,10 +76,10 @@ exports.default = _nextJsCore2.default.declare({
       this._container = document.getElementById(inAppId);
       this._$actions = (0, _redux.bindActionCreators)(Actions, this._store.dispatch);
       this.subscribe();
-      this.export();
+      this.exports();
     },
-    export: function _export() {
-      _nextJsCore2.default.each(this.__properties__, function (key, value) {
+    exports: function exports() {
+      _nextJsCore2.default.forIn(this.__properties__, function (key, value) {
         var descriptor = {
           get: value.get.bind(this),
           set: value.set.bind(this)
