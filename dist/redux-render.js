@@ -8,12 +8,14 @@ var _reduxBoot = require('./redux-boot');
 
 var _reduxBoot2 = _interopRequireDefault(_reduxBoot);
 
+var _reactLoadable = require('react-loadable');
+
+var _reactLoadable2 = _interopRequireDefault(_reactLoadable);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; } /** NOT SUPPORT IN HMR APP */
 
-
-// import Loadable from 'react-loadable';
 
 /**
 import  { $api, $config, $store } from '#';
@@ -67,7 +69,7 @@ exports.default = function (inId, inOptions) {
 
   return function (inTarget) {
     if (loadable) {
-      Loadable.preloadReady().then(function () {
+      _reactLoadable2.default.preloadReady().then(function () {
         _reduxBoot2.default.run(inTarget, inId, options);
       });
     } else {

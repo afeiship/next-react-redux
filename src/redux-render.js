@@ -1,6 +1,6 @@
 /** NOT SUPPORT IN HMR APP */
 import ReduxBoot from './redux-boot';
-// import Loadable from 'react-loadable';
+import Loadable from 'react-loadable';
 
 /**
 import  { $api, $config, $store } from '#';
