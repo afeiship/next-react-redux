@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import nx from 'next-js-core2';
 import { createStore, bindActionCreators } from 'redux';
 import NxStore from 'next-store';
+import nxGlobal from 'next-global';
 
 const States = require('next-redux-base').states;
 const Actions = require('next-redux-base').actions;
@@ -57,6 +58,7 @@ export default nx.declare({
       this._$actions = bindActionCreators(Actions, this._store.dispatch);
       this.subscribe();
       this.exports();
+      nxGlobal(null);
     },
     exports: function() {
       nx.forIn(

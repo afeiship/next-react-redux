@@ -22,6 +22,10 @@ var _nextStore = require('next-store');
 
 var _nextStore2 = _interopRequireDefault(_nextStore);
 
+var _nextGlobal = require('next-global');
+
+var _nextGlobal2 = _interopRequireDefault(_nextGlobal);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var States = require('next-redux-base').states;
@@ -77,6 +81,7 @@ exports.default = _nextJsCore2.default.declare({
       this._$actions = (0, _redux.bindActionCreators)(Actions, this._store.dispatch);
       this.subscribe();
       this.exports();
+      (0, _nextGlobal2.default)(null);
     },
     exports: function exports() {
       _nextJsCore2.default.forIn(this.__properties__, function (key, value) {
