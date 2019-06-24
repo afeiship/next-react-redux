@@ -1,6 +1,5 @@
 /** NOT SUPPORT IN HMR APP */
 import ReduxBoot from './redux-boot';
-import Loadable from 'react-loadable';
 
 /**
 import  { $api, $config, $store } from '#';
@@ -52,7 +51,8 @@ export default (inId, inOptions) => {
   const { loadable, ...options } = inOptions;
   return function(inTarget) {
     if (loadable) {
-      Loadable.preloadReady().then(() => {
+      const { preloadReady } = require('react-loadable');
+      preloadReady().then(() => {
         ReduxBoot.run(inTarget, inId, options);
       });
     } else {
