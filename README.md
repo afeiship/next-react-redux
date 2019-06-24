@@ -18,69 +18,43 @@
 ```
 + index.js
 ```javascript
-// index.js:
+import  { $api, $config, $store } from '#';
+import { HashRouter as Router, Switch } from 'react-router-dom';
+import { renderRoutes } from 'react-router-config';
+import routes from './routes';
+import { ReduxAppBase, ReduxBoot, reduxRender } from 'next-react-redux';
 import 'assets/styles/index.scss';
-import { ReduxBoot } from 'next-react-redux';
-import App from './app';
 
-ReduxBoot.run(App, 'root', {
-  prefix: 'react-spa'
-});
-
-
-//app.js:
-import { ReduxAppBase } from 'next-react-redux';
-
+// DO NOT USE `@hotable`
+@reduxRender('app', { prefix: 'react-spa', loadable: false })
 export default class extends ReduxAppBase {
-  static initialState() {
+  static initialState(inStore) {
+    const { login } = inStore.local;
     return {
+      local: {
+        login: login || null
+      },
       memory: {
-        initialData: {
-          tes: 123,
-          age: 100,
-          items: []
-        },
-        myInitial: 0,
-        sum: 0
-      },
-      local:{
-        store:0,
-        items:[
-          { key:1 }
-        ]
-      },
-      session:{
-        afei:'session test..'
+        modalUser: false,
+        modalUserQuery: false
       }
-    }
-  }
-
-  constructor(inProps){
-    super(inProps);
-    this._onClick = this._onClick.bind(this);
-  }
-
-  eventBus(inName,inData){
-    console.log(inName,inData, 'I am global event bus!');
+    };
   }
 
   componentDidMount() {
-    console.log(nx.$memory);
+    const { history } = this.root;
+    nx.$memory = { history };
   }
 
-  _onClick() {
-    let {test} = nx.$local;
-    test++;
-    nx.$local = { test };
+  eventBus(inName, inData) {
+    console.log('*, I am - global event bus center:->', inName, inData);
   }
 
   render() {
-    const {test} = nx.$local;
     return (
-      <div className="blank-module-view">
-        member-list....{test}
-        <button className="dc-button" onClick={this._onClick}>TEST</button>
-      </div>
+      <Router ref={(root) => (this.root = root)}>
+        <Switch>{renderRoutes(routes)}</Switch>
+      </Router>
     );
   }
 }
