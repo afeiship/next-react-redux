@@ -43,6 +43,7 @@ export default class extends ReduxAppBase {
 
   componentDidMount() {
     const { history } = this.root;
+    nx.$global = { 'abc.test': 123 };
     nx.$memory = { history };
   }
 
