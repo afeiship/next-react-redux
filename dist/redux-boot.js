@@ -81,7 +81,6 @@ exports.default = _nextJsCore2.default.declare({
       this._$actions = (0, _redux.bindActionCreators)(Actions, this._store.dispatch);
       this.subscribe();
       this.exports();
-      (0, _nextGlobal2.default)(null);
     },
     exports: function exports() {
       _nextJsCore2.default.forIn(this.__properties__, function (key, value) {
@@ -96,7 +95,7 @@ exports.default = _nextJsCore2.default.declare({
       //setPrefix:
       _nextStore2.default.config(this._options.prefix);
       var initialState = this._app.initialState(_nextStore2.default);
-      _nextJsCore2.default.$global = initialState.global || {};
+      (0, _nextGlobal2.default)(initialState.global);
       return Reducers(inState || initialState, inAction, this._options);
     },
     subscribe: function subscribe() {
