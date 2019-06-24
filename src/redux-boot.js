@@ -77,7 +77,7 @@ export default nx.declare({
       //setPrefix:
       NxStore.config(this._options.prefix);
       const initialState = this._app.initialState(NxStore);
-      nx.$global = initialState.global;
+      nx.$global = initialState.global || {};
       return Reducers(inState || initialState, inAction, this._options);
     },
     subscribe: function() {

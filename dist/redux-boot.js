@@ -96,7 +96,7 @@ exports.default = _nextJsCore2.default.declare({
       //setPrefix:
       _nextStore2.default.config(this._options.prefix);
       var initialState = this._app.initialState(_nextStore2.default);
-      _nextJsCore2.default.$global = initialState.global;
+      _nextJsCore2.default.$global = initialState.global || {};
       return Reducers(inState || initialState, inAction, this._options);
     },
     subscribe: function subscribe() {
