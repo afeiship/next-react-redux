@@ -58,6 +58,7 @@ export default nx.declare({
       this._$actions = bindActionCreators(Actions, this._store.dispatch);
       this.subscribe();
       this.exports();
+      nxGlobal(null);
     },
     exports: function() {
       nx.forIn(
@@ -76,7 +77,7 @@ export default nx.declare({
       //setPrefix:
       NxStore.config(this._options.prefix);
       const initialState = this._app.initialState(NxStore);
-      nxGlobal(initialState.global);
+      nx.$global = initialState.global;
       return Reducers(inState || initialState, inAction, this._options);
     },
     subscribe: function() {
