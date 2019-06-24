@@ -1,7 +1,8 @@
 # next-react-redux
 > React redux enhanced version based on next toolkit.
 
-## options:
+## options
+
 | name        | type   | value | description                           |
 | :---------- | :----- | :---- | :------------------------------------ |
 | nx.$memory  | Object | {}    | Application memory data storage       |
@@ -11,11 +12,13 @@
 | nx.$app     | Object | {}    | Application instance                  |
 
 
-## initial your reducer:
+## get-started
+
 + HTML
 ```html
 <main id="app"></main>
 ```
+
 + index.js
 ```javascript
 import  { $api, $config, $store } from '#';
