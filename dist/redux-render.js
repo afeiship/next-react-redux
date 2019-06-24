@@ -19,10 +19,8 @@ exports.default = function (inId, inOptions) {
 
   return function (inTarget) {
     if (loadable) {
-      var _require = require('react-loadable'),
-          preloadReady = _require.preloadReady;
-
-      preloadReady().then(function () {
+      var Loadable = require('react-loadable');
+      Loadable && Loadable.preloadReady().then(function () {
         _reduxBoot2.default.run(inTarget, inId, options);
       });
     } else {

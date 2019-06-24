@@ -35,9 +35,7 @@ var _default = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, inProps));
 
-    var App = _this.constructor;
-    _nextJsCore2.default.mix(App, inProps, _eventMitt2.default);
-    _nextJsCore2.default.$app = App;
+    _nextJsCore2.default.$app = _nextJsCore2.default.mix(_this.constructor, inProps, _eventMitt2.default);
     _nextJsCore2.default.$app.one('*', function (inName, inData) {
       _this.eventBus(inName, inData);
     });
