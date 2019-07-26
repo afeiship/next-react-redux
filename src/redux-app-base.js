@@ -1,13 +1,18 @@
-import COMMAND from './const';
-import React from 'react';
-import nx from 'next-js-core2';
+import COMMAND from "./const";
+import React from "react";
+import nx from "next-js-core2";
+import "./event";
 
 class ReduxAppBase extends React.Component {
   static attachEmiterSystem() {
     delete nx.event.init;
-    nx.mix(ReduxAppBase.prototype, {
-      __listeners__: {}
-    }, nx.event);
+    nx.mix(
+      ReduxAppBase.prototype,
+      {
+        __listeners__: {}
+      },
+      nx.event
+    );
   }
 
   constructor(props) {
@@ -28,17 +33,17 @@ class ReduxAppBase extends React.Component {
   commandMethods() {
     const self = this;
     return {
-      command: function (inName, inData) {
+      command: function(inName, inData) {
         self.props.command(inName, inData, self);
       },
-      onCommand: function (inName, inHandler) {
+      onCommand: function(inName, inHandler) {
         return self.props.onCommand(inName, inHandler, self);
       }
-    }
+    };
   }
 
   attachCommands() {
-    this.on(COMMAND, function (_, inArgs) {
+    this.on(COMMAND, function(_, inArgs) {
       this.command && this.command(inArgs.name, inArgs.data);
     });
   }

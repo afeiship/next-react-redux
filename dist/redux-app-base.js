@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6,17 +6,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _const = require('./const');
+var _const = require("./const");
 
 var _const2 = _interopRequireDefault(_const);
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _nextJsCore = require('next-js-core2');
+var _nextJsCore = require("next-js-core2");
 
 var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
+
+require("./event");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -30,7 +32,7 @@ var ReduxAppBase = function (_React$Component) {
   _inherits(ReduxAppBase, _React$Component);
 
   _createClass(ReduxAppBase, null, [{
-    key: 'attachEmiterSystem',
+    key: "attachEmiterSystem",
     value: function attachEmiterSystem() {
       delete _nextJsCore2.default.event.init;
       _nextJsCore2.default.mix(ReduxAppBase.prototype, {
@@ -59,7 +61,7 @@ var ReduxAppBase = function (_React$Component) {
   // }
 
   _createClass(ReduxAppBase, [{
-    key: 'commandMethods',
+    key: "commandMethods",
     value: function commandMethods() {
       var self = this;
       return {
@@ -72,14 +74,14 @@ var ReduxAppBase = function (_React$Component) {
       };
     }
   }, {
-    key: 'attachCommands',
+    key: "attachCommands",
     value: function attachCommands() {
       this.on(_const2.default, function (_, inArgs) {
         this.command && this.command(inArgs.name, inArgs.data);
       });
     }
   }, {
-    key: 'render',
+    key: "render",
     value: function render() {
       return null;
     }
