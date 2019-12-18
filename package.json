@@ -38,5 +38,8 @@
     "@feizheng/next-redux-base": "^3.0.1",
     "@feizheng/next-store": "^1.0.0",
     "redux": "^3.7.2"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
