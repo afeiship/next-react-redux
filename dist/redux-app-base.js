@@ -11,11 +11,11 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _eventMitt = require('event-mitt');
+var _eventMitt = require('@feizheng/event-mitt');
 
 var _eventMitt2 = _interopRequireDefault(_eventMitt);
 
-var _nextJsCore = require('next-js-core2');
+var _nextJsCore = require('@feizheng/next-js-core2');
 
 var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
 

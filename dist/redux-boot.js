@@ -12,25 +12,25 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _nextJsCore = require('next-js-core2');
+var _nextJsCore = require('@feizheng/next-js-core2');
 
 var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
 
 var _redux = require('redux');
 
-var _nextStore = require('next-store');
+var _nextStore = require('@feizheng/next-store');
 
 var _nextStore2 = _interopRequireDefault(_nextStore);
 
-var _nextGlobal = require('next-global');
+var _nextGlobal = require('@feizheng/next-global');
 
 var _nextGlobal2 = _interopRequireDefault(_nextGlobal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var States = require('next-redux-base').states;
-var Actions = require('next-redux-base').actions;
-var Reducers = require('next-redux-base').reducers;
+var States = require('@feizheng/next-redux-base').states;
+var Actions = require('@feizheng/next-redux-base').actions;
+var Reducers = require('@feizheng/next-redux-base').reducers;
 var DEFAULT_PREFIX = { prefix: 'nrrx' };
 
 exports.default = _nextJsCore2.default.declare({

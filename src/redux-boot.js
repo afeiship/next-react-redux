@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import nx from 'next-js-core2';
+import nx from '@feizheng/next-js-core2';
 import { createStore, bindActionCreators } from 'redux';
-import NxStore from 'next-store';
-import nxGlobal from 'next-global';
+import NxStore from '@feizheng/next-store';
+import nxGlobal from '@feizheng/next-global';
 
-const States = require('next-redux-base').states;
-const Actions = require('next-redux-base').actions;
-const Reducers = require('next-redux-base').reducers;
+const States = require('@feizheng/next-redux-base').states;
+const Actions = require('@feizheng/next-redux-base').actions;
+const Reducers = require('@feizheng/next-redux-base').reducers;
 const DEFAULT_PREFIX = { prefix: 'nrrx' };
 
 export default nx.declare({
