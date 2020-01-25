@@ -1,8 +1,12 @@
 # next-react-redux
 > React redux enhanced version based on next toolkit.
 
-## options
+## installation
+```shell
+npm i @feizheng/next-react-redux
+```
 
+## options
 | name        | type   | value | description                           |
 | :---------- | :----- | :---- | :------------------------------------ |
 | nx.$memory  | Object | {}    | Application memory data storage       |
@@ -13,7 +17,6 @@
 
 
 ## get-started
-
 + HTML
 ```html
 <main id="app"></main>
