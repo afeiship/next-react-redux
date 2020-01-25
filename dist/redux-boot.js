@@ -35,15 +35,15 @@ var DEFAULT_PREFIX = { prefix: 'nrrx' };
 
 exports.default = _nextJsCore2.default.declare({
   statics: {
-    _instance: null,
+    instance: null,
     run: function run(inApp, inAppId, inOptions) {
       //module.hot must create every time:
-      var instance = this._instance = new this(inApp, inAppId, inOptions);
+      var instance = this.instance = new this(inApp, inAppId, inOptions);
       instance.renderTo();
       return instance;
     },
     initialState: function initialState() {
-      return this._instance._app.initialState(_nextStore2.default);
+      return this.instance._app.initialState(_nextStore2.default);
     }
   },
   properties: {

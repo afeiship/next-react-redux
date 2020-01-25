@@ -12,15 +12,15 @@ const DEFAULT_PREFIX = { prefix: 'nrrx' };
 
 export default nx.declare({
   statics: {
-    _instance: null,
+    instance: null,
     run: function(inApp, inAppId, inOptions) {
       //module.hot must create every time:
-      const instance = (this._instance = new this(inApp, inAppId, inOptions));
+      const instance = (this.instance = new this(inApp, inAppId, inOptions));
       instance.renderTo();
       return instance;
     },
     initialState: function() {
-      return this._instance._app.initialState(NxStore);
+      return this.instance._app.initialState(NxStore);
     }
   },
   properties: {
