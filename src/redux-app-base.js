@@ -1,6 +1,6 @@
 import React from 'react';
-import EventMitt from '@feizheng/event-mitt';
-import nx from '@feizheng/next-js-core2';
+import EventMitt from '@jswork/event-mitt';
+import nx from '@jswork/next';
 
 export default class extends React.Component {
   constructor(inProps) {

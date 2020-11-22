@@ -11,13 +11,13 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _eventMitt = require('@feizheng/event-mitt');
+var _eventMitt = require('@jswork/event-mitt');
 
 var _eventMitt2 = _interopRequireDefault(_eventMitt);
 
-var _nextJsCore = require('@feizheng/next-js-core2');
+var _next = require('@jswork/next');
 
-var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
+var _next2 = _interopRequireDefault(_next);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35,8 +35,8 @@ var _default = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (_default.__proto__ || Object.getPrototypeOf(_default)).call(this, inProps));
 
-    _nextJsCore2.default.$app = _nextJsCore2.default.mix(_this.constructor, inProps, _eventMitt2.default);
-    _nextJsCore2.default.$app.one('*', function (inName, inData) {
+    _next2.default.$app = _next2.default.mix(_this.constructor, inProps, _eventMitt2.default);
+    _next2.default.$app.one('*', function (inName, inData) {
       _this.eventBus(inName, inData);
     });
     return _this;

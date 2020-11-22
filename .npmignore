@@ -6,3 +6,13 @@ static
 .gitignore
 yarn.lock
 test
+.release-it.json
+
+.babelrc
+.editorconfig
+.npmrc
+.prettierrc
+.release-it.json
+docs
+node_modules
+src

@@ -12,28 +12,28 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _nextJsCore = require('@feizheng/next-js-core2');
+var _next = require('@jswork/next');
 
-var _nextJsCore2 = _interopRequireDefault(_nextJsCore);
+var _next2 = _interopRequireDefault(_next);
 
 var _redux = require('redux');
 
-var _nextStore = require('@feizheng/next-store');
+var _nextStore = require('@jswork/next-store');
 
 var _nextStore2 = _interopRequireDefault(_nextStore);
 
-var _nextGlobal = require('@feizheng/next-global');
+var _nextGlobal = require('@jswork/next-global');
 
 var _nextGlobal2 = _interopRequireDefault(_nextGlobal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var States = require('@feizheng/next-redux-base').states;
-var Actions = require('@feizheng/next-redux-base').actions;
-var Reducers = require('@feizheng/next-redux-base').reducers;
+var States = require('@jswork/next-redux-base').states;
+var Actions = require('@jswork/next-redux-base').actions;
+var Reducers = require('@jswork/next-redux-base').reducers;
 var DEFAULT_PREFIX = { prefix: 'nrrx' };
 
-exports.default = _nextJsCore2.default.declare({
+exports.default = _next2.default.declare({
   statics: {
     instance: null,
     run: function run(inApp, inAppId, inOptions) {
@@ -83,12 +83,12 @@ exports.default = _nextJsCore2.default.declare({
       this.exports();
     },
     exports: function exports() {
-      _nextJsCore2.default.forIn(this.__properties__, function (key, value) {
+      _next2.default.forIn(this.__properties__, function (key, value) {
         var descriptor = {
           get: value.get.bind(this),
           set: value.set.bind(this)
         };
-        _nextJsCore2.default.defineProperty(_nextJsCore2.default, '$' + key, descriptor);
+        _next2.default.defineProperty(_next2.default, '$' + key, descriptor);
       }, this);
     },
     reducers: function reducers(inState, inAction) {

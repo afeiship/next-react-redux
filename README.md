@@ -3,7 +3,7 @@
 
 ## installation
 ```shell
-npm i @feizheng/next-react-redux
+npm i @jswork/next-react-redux
 ```
 
 ## options
@@ -28,7 +28,7 @@ import  { $api, $config, $store } from '#';
 import { HashRouter as Router, Switch } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import routes from './routes';
-import { ReduxAppBase, ReduxBoot, reduxRender } from '@feizheng/next-react-redux';
+import { ReduxAppBase, ReduxBoot, reduxRender } from '@jswork/next-react-redux';
 import 'assets/styles/index.scss';
 
 // DO NOT USE `@hotable`
