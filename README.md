@@ -1,6 +1,11 @@
 # next-react-redux
 > React redux enhanced version based on next toolkit.
 
+[![version][version-image]][version-url]
+[![license][license-image]][license-url]
+[![size][size-image]][size-url]
+[![download][download-image]][download-url]
+
 ## installation
 ```shell
 npm i @jswork/next-react-redux
@@ -66,3 +71,18 @@ export default class extends ReduxAppBase {
   }
 }
 ```
+
+## license
+Code released under [the MIT license](https://github.com/afeiship/next-react-redux/blob/master/LICENSE.txt).
+
+[version-image]: https://img.shields.io/npm/v/@jswork/next-react-redux
+[version-url]: https://npmjs.org/package/@jswork/next-react-redux
+
+[license-image]: https://img.shields.io/npm/l/@jswork/next-react-redux
+[license-url]: https://github.com/afeiship/next-react-redux/blob/master/LICENSE.txt
+
+[size-image]: https://img.shields.io/bundlephobia/minzip/@jswork/next-react-redux
+[size-url]: https://github.com/afeiship/next-react-redux/blob/master/dist/next-react-redux.min.js
+
+[download-image]: https://img.shields.io/npm/dm/@jswork/next-react-redux
+[download-url]: https://www.npmjs.com/package/@jswork/next-react-redux
