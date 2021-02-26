@@ -94,7 +94,7 @@ exports.default = _next2.default.declare({
     },
     reducers: function reducers(inState, inAction) {
       //setPrefix:
-      storeInstance.config(this._options.prefix);
+      storeInstance.config(this._options);
       var initialState = this._app.initialState(storeInstance);
       (0, _nextGlobal2.default)(initialState.global);
       return Reducers(inState || initialState, inAction, storeInstance);
