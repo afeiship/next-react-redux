@@ -61,7 +61,7 @@ exports.default = _next2.default.declare({
         this._$actions.setLocal(inValue);
       },
       get: function get() {
-        return States.getLocal();
+        return States.getLocal(storeInstance);
       }
     },
     session: {
@@ -69,7 +69,7 @@ exports.default = _next2.default.declare({
         this._$actions.setSession(inValue);
       },
       get: function get() {
-        return States.getSession();
+        return States.getSession(storeInstance);
       }
     }
   },
@@ -97,7 +97,7 @@ exports.default = _next2.default.declare({
       storeInstance.config(this._options.prefix);
       var initialState = this._app.initialState(storeInstance);
       (0, _nextGlobal2.default)(initialState.global);
-      return Reducers(inState || initialState, inAction, this._options);
+      return Reducers(inState || initialState, inAction, storeInstance);
     },
     subscribe: function subscribe() {
       this._store.subscribe(this.renderTo.bind(this));
