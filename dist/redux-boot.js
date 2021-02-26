@@ -32,6 +32,7 @@ var States = require('@jswork/next-redux-base').states;
 var Actions = require('@jswork/next-redux-base').actions;
 var Reducers = require('@jswork/next-redux-base').reducers;
 var DEFAULT_PREFIX = { prefix: 'nrrx' };
+var storeInstance = new _nextStore2.default();
 
 exports.default = _next2.default.declare({
   statics: {
@@ -43,7 +44,7 @@ exports.default = _next2.default.declare({
       return instance;
     },
     initialState: function initialState() {
-      return this.instance._app.initialState(_nextStore2.default);
+      return this.instance._app.initialState(storeInstance);
     }
   },
   properties: {
@@ -93,8 +94,8 @@ exports.default = _next2.default.declare({
     },
     reducers: function reducers(inState, inAction) {
       //setPrefix:
-      _nextStore2.default.config(this._options.prefix);
-      var initialState = this._app.initialState(_nextStore2.default);
+      storeInstance.config(this._options.prefix);
+      var initialState = this._app.initialState(storeInstance);
       (0, _nextGlobal2.default)(initialState.global);
       return Reducers(inState || initialState, inAction, this._options);
     },

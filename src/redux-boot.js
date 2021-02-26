@@ -9,6 +9,7 @@ const States = require('@jswork/next-redux-base').states;
 const Actions = require('@jswork/next-redux-base').actions;
 const Reducers = require('@jswork/next-redux-base').reducers;
 const DEFAULT_PREFIX = { prefix: 'nrrx' };
+const storeInstance = new NxStore();
 
 export default nx.declare({
   statics: {
@@ -20,7 +21,7 @@ export default nx.declare({
       return instance;
     },
     initialState: function() {
-      return this.instance._app.initialState(NxStore);
+      return this.instance._app.initialState(storeInstance);
     }
   },
   properties: {
@@ -74,8 +75,8 @@ export default nx.declare({
     },
     reducers: function(inState, inAction) {
       //setPrefix:
-      NxStore.config(this._options.prefix);
-      const initialState = this._app.initialState(NxStore);
+      storeInstance.config(this._options.prefix);
+      const initialState = this._app.initialState(storeInstance);
       nxGlobal(initialState.global);
       return Reducers(inState || initialState, inAction, this._options);
     },
