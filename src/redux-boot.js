@@ -14,44 +14,44 @@ const storeInstance = new NxStore();
 export default nx.declare({
   statics: {
     instance: null,
-    run: function(inApp, inAppId, inOptions) {
+    run: function (inApp, inAppId, inOptions) {
       //module.hot must create every time:
       const instance = (this.instance = new this(inApp, inAppId, inOptions));
       instance.renderTo();
       return instance;
     },
-    initialState: function() {
+    initialState: function () {
       return this.instance._app.initialState(storeInstance);
     }
   },
   properties: {
     memory: {
-      set: function(inValue) {
+      set: function (inValue) {
         this._$actions.setMemory(inValue);
       },
-      get: function() {
+      get: function () {
         return States.getMemory(this._store);
       }
     },
     local: {
-      set: function(inValue) {
+      set: function (inValue) {
         this._$actions.setLocal(inValue);
       },
-      get: function() {
-        return States.getLocal();
+      get: function () {
+        return States.getLocal(storeInstance);
       }
     },
     session: {
-      set: function(inValue) {
+      set: function (inValue) {
         this._$actions.setSession(inValue);
       },
-      get: function() {
-        return States.getSession();
+      get: function () {
+        return States.getSession(storeInstance);
       }
     }
   },
   methods: {
-    init: function(inApp, inAppId, inOptions) {
+    init: function (inApp, inAppId, inOptions) {
       this._app = inApp;
       this._options = inOptions || DEFAULT_PREFIX;
       this._store = createStore(this.reducers.bind(this));
@@ -60,10 +60,10 @@ export default nx.declare({
       this.subscribe();
       this.exports();
     },
-    exports: function() {
+    exports: function () {
       nx.forIn(
         this.__properties__,
-        function(key, value) {
+        function (key, value) {
           var descriptor = {
             get: value.get.bind(this),
             set: value.set.bind(this)
@@ -73,17 +73,17 @@ export default nx.declare({
         this
       );
     },
-    reducers: function(inState, inAction) {
+    reducers: function (inState, inAction) {
       //setPrefix:
       storeInstance.config(this._options.prefix);
       const initialState = this._app.initialState(storeInstance);
       nxGlobal(initialState.global);
-      return Reducers(inState || initialState, inAction, this._options);
+      return Reducers(inState || initialState, inAction, storeInstance);
     },
-    subscribe: function() {
+    subscribe: function () {
       this._store.subscribe(this.renderTo.bind(this));
     },
-    renderTo: function() {
+    renderTo: function () {
       ReactDOM.render(
         React.createElement(this._app, {
           store: this._store,
